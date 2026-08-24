@@ -13,5 +13,12 @@ This repository contains the daily tasks and projects completed during my intern
 Each internship task is organized by day.
 
 ```text
-Day-01/
-└── Personal-Information-Program/
+veda-technology-internship
+│
+├── Day-01
+│   └── Personal-Information-Program
+│       ├── personal_information.py
+│       ├── README.md
+│       
+│
+├── README.md
