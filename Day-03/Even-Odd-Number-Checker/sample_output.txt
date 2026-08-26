@@ -1,0 +1,19 @@
+Example 1:
+
+Even and Odd Number Checker
+Enter a number: 10
+10 is an even number.
+
+
+Example 2:
+
+Even and Odd Number Checker
+Enter a number: 7
+7 is an odd number.
+
+
+Example 3:
+
+Even and Odd Number Checker
+Enter a number: -8
+-8 is an even number.
