@@ -9,6 +9,7 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 01 | Personal Information Program | Completed |
 | Day 02 | Simple Calculator | Completed |
 | Day 03 | Even and Odd Number Checker | Completed |
+| Day 04 | Student Grade Calculator | Completed |
 
 ## Repository Structure
 
@@ -34,5 +35,9 @@ veda-technology-internship/
 │       ├── even_odd_checker.py
 │       ├── README.md
 │       └── sample_output.txt
-│
+├── Day-04/
+│   └── Student-Grade-Calculator/
+│       ├── grade_calculator.py
+│       ├── README.md
+│       └── sample_output.txt
 └── README.md
