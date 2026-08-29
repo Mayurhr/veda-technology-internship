@@ -11,6 +11,7 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 03 | Even and Odd Number Checker | Completed |
 | Day 04 | Student Grade Calculator | Completed |
 | Day 05 | Number Guessing Game | Completed |
+| Day 06 | Multiplication Table | Completed |
 
 ## Repository Structure
 
@@ -36,14 +37,23 @@ veda-technology-internship/
 │       ├── even_odd_checker.py
 │       ├── README.md
 │       └── sample_output.txt
+│
 ├── Day-04/
 │   └── Student-Grade-Calculator/
 │       ├── grade_calculator.py
 │       ├── README.md
 │       └── sample_output.txt
+│
 ├── Day-05/
 │   └── Number-Guessing-Game/
 │       ├── number_guessing_game.py
 │       ├── README.md
 │       └── sample_output.txt
+│
+├── Day-06/
+│   └── Multiplication-Table/
+│       ├── multiplication_table.py
+│       ├── README.md
+│       └── sample_output.txt
+│
 └── README.md
