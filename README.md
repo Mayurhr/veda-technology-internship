@@ -12,6 +12,7 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 04 | Student Grade Calculator | Completed |
 | Day 05 | Number Guessing Game | Completed |
 | Day 06 | Multiplication Table | Completed |
+| Day 07 | Simple Password Validator | Completed |
 
 ## Repository Structure
 
@@ -56,4 +57,9 @@ veda-technology-internship/
 │       ├── README.md
 │       └── sample_output.txt
 │
+├── Day-07/
+│   └── Simple-Password-Validator/
+│       ├── password_validator.py
+│       ├── README.md
+│       └── sample_output.txt
 └── README.md
