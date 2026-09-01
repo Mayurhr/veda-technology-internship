@@ -14,6 +14,7 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 06 | Multiplication Table | Completed |
 | Day 07 | Password Validator | Completed |
 | Day 08 | Simple To-Do List | Completed |
+| Day 09 | Student Records Using Lists | Completed |
 
 ## Repository Structure
 
@@ -70,4 +71,9 @@ veda-technology-internship/
 │       ├── README.md
 │       └── sample_output.txt
 │
+├── Day-09/
+│   └── Student-Records/
+│       ├── student_records.py
+│       ├── README.md
+│       └── sample_output.txt
 └── README.md
