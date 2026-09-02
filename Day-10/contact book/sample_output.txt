@@ -1,0 +1,87 @@
+--- Contact Book ---
+1. Add Contact
+2. Search Contact
+3. Update Contact
+4. Delete Contact
+5. View Contacts
+6. Exit
+
+Enter your choice: 1
+Enter name: Rahul
+Enter phone number: 9876543210
+Contact added successfully.
+
+--- Contact Book ---
+1. Add Contact
+2. Search Contact
+3. Update Contact
+4. Delete Contact
+5. View Contacts
+6. Exit
+
+Enter your choice: 1
+Enter name: Priya
+Enter phone number: 9123456780
+Contact added successfully.
+
+--- Contact Book ---
+1. Add Contact
+2. Search Contact
+3. Update Contact
+4. Delete Contact
+5. View Contacts
+6. Exit
+
+Enter your choice: 5
+
+Contacts:
+Rahul : 9876543210
+Priya : 9123456780
+
+--- Contact Book ---
+1. Add Contact
+2. Search Contact
+3. Update Contact
+4. Delete Contact
+5. View Contacts
+6. Exit
+
+Enter your choice: 2
+Enter name to search: Rahul
+Phone: 9876543210
+
+--- Contact Book ---
+1. Add Contact
+2. Search Contact
+3. Update Contact
+4. Delete Contact
+5. View Contacts
+6. Exit
+
+Enter your choice: 3
+Enter name to update: Rahul
+Enter new phone number: 9999999999
+Contact updated successfully.
+
+--- Contact Book ---
+1. Add Contact
+2. Search Contact
+3. Update Contact
+4. Delete Contact
+5. View Contacts
+6. Exit
+
+Enter your choice: 4
+Enter name to delete: Priya
+Contact deleted successfully.
+
+--- Contact Book ---
+1. Add Contact
+2. Search Contact
+3. Update Contact
+4. Delete Contact
+5. View Contacts
+6. Exit
+
+Enter your choice: 6
+Thank you for using Contact Book.
