@@ -15,6 +15,7 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 07 | Password Validator | Completed |
 | Day 08 | Simple To-Do List | Completed |
 | Day 09 | Student Records Using Lists | Completed |
+| Day 10 | Contact Book Using Dictionaries | Completed |
 
 ## Repository Structure
 
@@ -74,6 +75,11 @@ veda-technology-internship/
 ├── Day-09/
 │   └── Student-Records/
 │       ├── student_records.py
+│       ├── README.md
+│       └── sample_output.txt
+├── Day-10/
+│   └── Contact-Book-Using-Dictionaries/
+│       ├── contact_book.py
 │       ├── README.md
 │       └── sample_output.txt
 └── README.md
