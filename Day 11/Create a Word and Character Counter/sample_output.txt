@@ -1,0 +1,7 @@
+Enter a paragraph: Python is easy to learn. I am practicing Python today!
+
+--- Text Statistics ---
+Characters: 54
+Words: 11
+Sentences: 2
+Spaces: 10
