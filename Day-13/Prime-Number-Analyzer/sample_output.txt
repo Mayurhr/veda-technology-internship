@@ -1,0 +1,38 @@
+--- Prime Number Analyzer ---
+1. Check Prime Number
+2. Generate Prime Numbers
+3. Exit
+Enter your choice: 1
+Enter a number: 17
+17 is a prime number.
+
+--- Prime Number Analyzer ---
+1. Check Prime Number
+2. Generate Prime Numbers
+3. Exit
+Enter your choice: 1
+Enter a number: 20
+20 is not a prime number.
+
+--- Prime Number Analyzer ---
+1. Check Prime Number
+2. Generate Prime Numbers
+3. Exit
+Enter your choice: 2
+Enter the starting number: 1
+Enter the ending number: 20
+Prime numbers: 2, 3, 5, 7, 11, 13, 17, 19
+
+--- Prime Number Analyzer ---
+1. Check Prime Number
+2. Generate Prime Numbers
+3. Exit
+Enter your choice: 9
+Invalid choice. Please select 1, 2, or 3.
+
+--- Prime Number Analyzer ---
+1. Check Prime Number
+2. Generate Prime Numbers
+3. Exit
+Enter your choice: 3
+Exiting the program. Goodbye!

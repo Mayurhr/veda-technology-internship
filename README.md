@@ -16,6 +16,9 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 08 | Simple To-Do List | Completed |
 | Day 09 | Student Records Using Lists | Completed |
 | Day 10 | Contact Book Using Dictionaries | Completed |
+| Day 11 | Word and Character Counter | Completed |
+| Day 12 | Palindrome Checker | Completed |
+| Day 13 | Prime Number Analyzer | Completed |
 
 ## Repository Structure
 
@@ -77,9 +80,29 @@ veda-technology-internship/
 │       ├── student_records.py
 │       ├── README.md
 │       └── sample_output.txt
+│
 ├── Day-10/
-│   └── Contact-Book-Using-Dictionaries/
+│   └── contact book/
 │       ├── contact_book.py
 │       ├── README.md
 │       └── sample_output.txt
+│
+├── Day-11/
+│   └── Create a Word and Character Counter/
+│       ├── word_character_counter.py
+│       ├── README.md
+│       └── sample_output.txt
+│
+├── Day-12/
+│   └── Palindrome-Checker/
+│       ├── palindrome_checker.py
+│       ├── README.md
+│       └── sample_output.txt
+│
+├── Day-13/
+│   └── Prime-Number-Analyzer/
+│       ├── prime_number_analyzer.py
+│       ├── README.md
+│       └── sample_output.txt
+│
 └── README.md
