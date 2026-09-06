@@ -52,9 +52,3 @@ See `sample_output.txt` for examples of Celsius to Fahrenheit, Fahrenheit to Cel
 - Input validation
 - String methods
 - Formatted output
-
-## Internship
-
-Veda Technology Python Programming Internship
-
-Day 14 - Temperature Converter
