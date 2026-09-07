@@ -1,0 +1,37 @@
+
+---
+
+# 4. `sample_output.txt`
+
+Use this sample:
+
+```text
+===== SHOPPING BILL GENERATOR =====
+Enter number of products: 3
+
+Product 1
+Enter product name: Laptop
+Enter quantity: 1
+Enter price: 45000
+
+Product 2
+Enter product name: Mouse
+Enter quantity: 2
+Enter price: 500
+
+Product 3
+Enter product name: Keyboard
+Enter quantity: 1
+Enter price: 1500
+
+========== SHOPPING BILL ==========
+Product        Qty     Price     Total
+Laptop         1       45000.00  45000.00
+Mouse          2       500.00     1000.00
+Keyboard       1       1500.00    1500.00
+-----------------------------------
+Subtotal:              ₹47500.00
+Discount:              ₹4750.00
+Tax:                   ₹2137.50
+Final Amount:          ₹44887.50
+===================================
