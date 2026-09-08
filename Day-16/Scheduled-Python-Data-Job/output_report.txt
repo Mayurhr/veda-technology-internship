@@ -1,0 +1,5 @@
+Scheduled Data Job Report
+-------------------------
+Records processed: 3
+Total sales: $250.00
+Average sale: $83.33
