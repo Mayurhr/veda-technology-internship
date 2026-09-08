@@ -20,6 +20,7 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 12 | Palindrome Checker | Completed |
 | Day 13 | Prime Number Analyzer | Completed |
 | Day 14 | Temperature Converter | Completed |
+| Day 15 | Shopping Bill Generator | Completed |
 | Day 16 | Scheduled Python Data Job | Completed |
 
 ## Repository Structure
@@ -110,6 +111,12 @@ veda-technology-internship/
 ├── Day-14/
 │   └── Temperature-Converter/
 │       ├── temperature_converter.py
+│       ├── README.md
+│       └── sample_output.txt
+│
+├── Day-15/
+│   └──  Shopping-Bill-Generator/
+│       ├── shopping_bill.py
 │       ├── README.md
 │       └── sample_output.txt
 │
