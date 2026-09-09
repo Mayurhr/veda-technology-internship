@@ -1,0 +1,12 @@
+Program started
+Dataset processed: 4 records
+Business Sales Report
+----------------------
+Records processed: 4
+Total sales: $425.00
+Total quantity: 38
+Average sales: $106.25
+Highest-selling product: Desk Organizer
+Report generated successfully
+Email status: Skipped (email credentials are not configured)
+Program completed
