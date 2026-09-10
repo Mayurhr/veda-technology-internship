@@ -23,6 +23,7 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 15 | Shopping Bill Generator | Completed |
 | Day 16 | Scheduled Python Data Job | Completed |
 | Day 17 | Email Report Automation System | Completed |
+| Day 18 | Log Monitoring and Alert System | Completed |
 
 ## Repository Structure
 
@@ -134,5 +135,14 @@ veda-technology-internship/
 │       ├── README.md
 │       ├── sample_output.txt
 │       └── execution.log
+│
+├── Day-18/
+│   └── Log-Monitoring-and-Alert-System/
+│       ├── log_monitor.py
+│       ├── README.md
+│       ├── sample_log.txt
+│       ├── sample_output.txt
+│       ├── execution.log
+│       └── alert.log
 │
 └── README.md

@@ -1,0 +1,3 @@
+ALERT: Error count reached the configured threshold.
+Total errors: 3
+Threshold: 3

@@ -1,0 +1,7 @@
+Log Monitoring Started
+Checking sample_log.txt...
+Total ERROR entries found: 3
+Error threshold: 3
+ALERT: Error threshold reached!
+Alert saved to alert.log
+Monitoring completed successfully.

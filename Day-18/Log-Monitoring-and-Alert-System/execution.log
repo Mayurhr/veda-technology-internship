@@ -1,0 +1,26 @@
+2026-09-10 10:10:00,000 - INFO - Monitoring started
+2026-09-10 10:10:00,001 - INFO - Log file checked: sample_log.txt
+2026-09-10 10:10:00,001 - INFO - Number of errors found: 3
+2026-09-10 10:10:00,001 - INFO - Error threshold: 3
+2026-09-10 10:10:00,002 - WARNING - Alert generated
+2026-09-10 10:10:00,002 - INFO - Monitoring completed
+2026-09-10 17:57:01,935 - INFO - Monitoring started
+2026-09-10 17:57:01,939 - INFO - Log file checked: C:\Users\DELL\OneDrive\Dokumen\veda-technology-internship\Day-18\Log-Monitoring-and-Alert-System\sample_log.txt
+2026-09-10 17:57:01,939 - INFO - Number of errors found: 3
+2026-09-10 17:57:01,939 - INFO - Error threshold: 3
+2026-09-10 17:57:01,940 - WARNING - Alert generated
+2026-09-10 17:57:01,942 - INFO - Monitoring completed
+2026-09-10 17:57:32,671 - INFO - Monitoring started
+2026-09-10 17:57:32,672 - INFO - Log file checked: C:\Users\DELL\OneDrive\Dokumen\veda-technology-internship\Day-18\Log-Monitoring-and-Alert-System\sample_log.txt
+2026-09-10 17:57:32,673 - INFO - Number of errors found: 3
+2026-09-10 17:57:32,673 - INFO - Error threshold: 4
+2026-09-10 17:57:32,674 - INFO - No alert generated
+2026-09-10 17:57:32,674 - INFO - Monitoring completed
+2026-09-10 17:57:33,003 - INFO - Monitoring started
+2026-09-10 17:57:33,003 - ERROR - Log file is missing: missing_sample_log.txt
+2026-09-10 17:57:33,249 - INFO - Monitoring started
+2026-09-10 17:57:33,250 - INFO - Log file checked: C:\Users\DELL\OneDrive\Dokumen\veda-technology-internship\Day-18\Log-Monitoring-and-Alert-System\sample_log.txt
+2026-09-10 17:57:33,250 - INFO - Number of errors found: 3
+2026-09-10 17:57:33,251 - INFO - Error threshold: 3
+2026-09-10 17:57:33,252 - WARNING - Alert generated
+2026-09-10 17:57:33,257 - INFO - Monitoring completed
