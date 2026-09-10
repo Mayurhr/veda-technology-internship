@@ -1,0 +1,28 @@
+Example 1:
+
+Enter your password: Python@123
+Password is valid.
+
+
+Example 2:
+
+Enter your password: python123
+Password must contain an uppercase letter.
+
+
+Example 3:
+
+Enter your password: PYTHON@123
+Password must contain a lowercase letter.
+
+
+Example 4:
+
+Enter your password: Python@abc
+Password must contain a number.
+
+
+Example 5:
+
+Enter your password: Python123
+Password must contain a special character.
