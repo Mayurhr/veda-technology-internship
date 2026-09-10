@@ -1,0 +1,14 @@
+Student Grade Calculator
+------------------------
+Enter number of subjects: 5
+Enter marks for subject 1: 85
+Enter marks for subject 2: 78
+Enter marks for subject 3: 92
+Enter marks for subject 4: 88
+Enter marks for subject 5: 80
+
+Student Result
+-------------
+Total Marks: 423.0
+Percentage: 84.60%
+Grade: A

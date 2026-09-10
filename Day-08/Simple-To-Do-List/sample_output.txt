@@ -1,0 +1,101 @@
+
+---
+
+# 3. `sample_output.txt`
+
+```text
+--- To-Do List ---
+1. Add Task
+2. View Tasks
+3. Update Task
+4. Remove Task
+5. Exit
+Enter your choice: 1
+
+Enter a task: Complete Python assignment
+Task added successfully!
+
+--- To-Do List ---
+1. Add Task
+2. View Tasks
+3. Update Task
+4. Remove Task
+5. Exit
+Enter your choice: 1
+
+Enter a task: Study for interview
+Task added successfully!
+
+--- To-Do List ---
+1. Add Task
+2. View Tasks
+3. Update Task
+4. Remove Task
+5. Exit
+Enter your choice: 2
+
+To-Do List:
+1. Complete Python assignment
+2. Study for interview
+
+--- To-Do List ---
+1. Add Task
+2. View Tasks
+3. Update Task
+4. Remove Task
+5. Exit
+Enter your choice: 3
+
+To-Do List:
+1. Complete Python assignment
+2. Study for interview
+Enter task number to update: 2
+Enter new task: Practice Python
+Task updated successfully!
+
+--- To-Do List ---
+1. Add Task
+2. View Tasks
+3. Update Task
+4. Remove Task
+5. Exit
+Enter your choice: 2
+
+To-Do List:
+1. Complete Python assignment
+2. Practice Python
+
+--- To-Do List ---
+1. Add Task
+2. View Tasks
+3. Update Task
+4. Remove Task
+5. Exit
+Enter your choice: 4
+
+To-Do List:
+1. Complete Python assignment
+2. Practice Python
+Enter task number to remove: 1
+Task removed successfully!
+
+--- To-Do List ---
+1. Add Task
+2. View Tasks
+3. Update Task
+4. Remove Task
+5. Exit
+Enter your choice: 2
+
+To-Do List:
+1. Practice Python
+
+--- To-Do List ---
+1. Add Task
+2. View Tasks
+3. Update Task
+4. Remove Task
+5. Exit
+Enter your choice: 5
+
+Thank you for using the To-Do List!

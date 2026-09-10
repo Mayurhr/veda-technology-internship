@@ -1,0 +1,22 @@
+
+## 4. `sample_output.txt`
+
+```text
+Student Records
+----------------
+Mayur - 85
+Rahul - 72
+Anil - 91
+Sneha - 78
+
+Highest Score:
+Anil - 91
+
+Lowest Score:
+Rahul - 72
+
+Sorted Marks:
+[72, 78, 85, 91]
+
+Enter student name to search: Mayur
+Mayur has scored 85

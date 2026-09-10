@@ -1,0 +1,29 @@
+--- Temperature Converter ---
+Enter the temperature value: 25
+Enter the source unit (C, F, or K): C
+Enter the target unit (C, F, or K): F
+Result: 77.00 F
+
+--- Temperature Converter ---
+Enter the temperature value: 98.6
+Enter the source unit (C, F, or K): F
+Enter the target unit (C, F, or K): C
+Result: 37.00 C
+
+--- Temperature Converter ---
+Enter the temperature value: 0
+Enter the source unit (C, F, or K): C
+Enter the target unit (C, F, or K): K
+Result: 273.15 K
+
+--- Temperature Converter ---
+Enter the temperature value: 273.15
+Enter the source unit (C, F, or K): K
+Enter the target unit (C, F, or K): C
+Result: 0.00 C
+
+--- Temperature Converter ---
+Enter the temperature value: -1
+Enter the source unit (C, F, or K): K
+Enter the target unit (C, F, or K): C
+Invalid temperature. It cannot be below absolute zero.

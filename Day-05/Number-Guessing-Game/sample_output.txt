@@ -1,0 +1,10 @@
+Number Guessing Game
+--------------------
+Guess the number (1-100): 50
+Too low! Try again.
+Guess the number (1-100): 75
+Too high! Try again.
+Guess the number (1-100): 63
+Too low! Try again.
+Guess the number (1-100): 68
+Correct! You guessed the number in 4 attempts.

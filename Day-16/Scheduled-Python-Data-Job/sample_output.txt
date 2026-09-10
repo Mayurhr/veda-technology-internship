@@ -1,0 +1,7 @@
+Program started
+Running the first job execution...
+Job completed successfully
+Processed data: 3 records
+Total: $250.00
+Average: $83.33
+Scheduler running. The job will run every 10 seconds.

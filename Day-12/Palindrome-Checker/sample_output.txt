@@ -1,0 +1,16 @@
+Example 1:
+
+Enter a word or sentence: Madam
+Result: It is a palindrome.
+
+
+Example 2:
+
+Enter a word or sentence: Python
+Result: It is not a palindrome.
+
+
+Example 3:
+
+Enter a word or sentence: Level
+Result: It is a palindrome.
