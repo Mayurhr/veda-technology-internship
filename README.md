@@ -24,6 +24,7 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 16 | Scheduled Python Data Job | Completed |
 | Day 17 | Email Report Automation System | Completed |
 | Day 18 | Log Monitoring and Alert System | Completed |
+| Day 19 | Multi-User Task Management API | Completed |
 
 ## Repository Structure
 
@@ -144,5 +145,16 @@ veda-technology-internship/
 │       ├── sample_output.txt
 │       ├── execution.log
 │       └── alert.log
+│
+├── Day-19/
+│   └── Multi-User-Task-Management-API/
+│       ├── main.py
+│       ├── database.py
+│       ├── models.py
+│       ├── schemas.py
+│       ├── auth.py
+│       ├── requirements.txt
+│       ├── README.md
+│       └── sample_output.txt
 │
 └── README.md

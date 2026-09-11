@@ -1,0 +1,22 @@
+Multi-User Task Management API test results
+
+GET /                         -> 200 OK
+POST /register (alice)        -> 201 Created
+POST /register (bob)          -> 201 Created
+POST /login (alice)           -> 200 OK
+POST /tasks (alice)           -> 201 Created, task id: 1
+GET /tasks (alice)            -> 200 OK, one task returned
+PUT /tasks/1 (alice)          -> 200 OK, task marked completed
+GET /tasks/1 (bob)            -> 404 Not Found
+DELETE /tasks/1 (alice)       -> 204 No Content
+GET /tasks/999 (alice)        -> 404 Not Found
+GET /tasks with invalid token -> 401 Unauthorized
+
+Example protected task response:
+{
+  "id": 1,
+  "title": "Learn FastAPI",
+  "description": "Practice protected endpoints",
+  "completed": true,
+  "owner_id": 1
+}
