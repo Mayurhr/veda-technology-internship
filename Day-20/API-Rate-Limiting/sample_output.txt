@@ -1,0 +1,24 @@
+API Rate Limiting Test
+Endpoint: GET /hello
+Request limit: 5 requests
+Time window: 60 seconds
+Client: 127.0.0.1
+
+Request 1: 200 OK
+Response: {"message":"Hello! Your request was accepted."}
+X-RateLimit-Limit: 5
+X-RateLimit-Remaining: 4
+
+Request 2: 200 OK, remaining requests: 3
+Request 3: 200 OK, remaining requests: 2
+Request 4: 200 OK, remaining requests: 1
+Request 5: 200 OK, remaining requests: 0
+
+Request 6: 429 Too Many Requests
+Response: {"detail":"Rate limit exceeded. Please try again later."}
+Retry-After: 60
+
+After the time window expired:
+Request 7: 200 OK
+Response: {"message":"Hello! Your request was accepted."}
+Counter reset successfully.

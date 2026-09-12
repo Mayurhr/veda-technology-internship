@@ -25,6 +25,7 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 17 | Email Report Automation System | Completed |
 | Day 18 | Log Monitoring and Alert System | Completed |
 | Day 19 | Multi-User Task Management API | Completed |
+| Day 20 | API Rate Limiting | Completed |
 
 ## Repository Structure
 
@@ -153,6 +154,13 @@ veda-technology-internship/
 │       ├── models.py
 │       ├── schemas.py
 │       ├── auth.py
+│       ├── requirements.txt
+│       ├── README.md
+│       └── sample_output.txt
+│
+├── Day-20/
+│   └── API-Rate-Limiting/
+│       ├── main.py
 │       ├── requirements.txt
 │       ├── README.md
 │       └── sample_output.txt
