@@ -1,0 +1,47 @@
+API Caching Layer started at http://127.0.0.1:8000
+
+GET /data
+{
+  "data": {
+    "message": "This data came from the sample API.",
+    "version": 1
+  },
+  "cache_status": "miss",
+  "cache_ttl_seconds": 30,
+  "response_time_ms": 53.41
+}
+
+GET /data
+{
+  "data": {
+    "message": "This data came from the sample API.",
+    "version": 1
+  },
+  "cache_status": "hit",
+  "cache_ttl_seconds": 30,
+  "response_time_ms": 1.28
+}
+
+PUT /data
+{
+  "message": "Underlying data updated and related cache invalidated.",
+  "data": {
+    "message": "The data was updated.",
+    "version": 2
+  }
+}
+
+GET /data after invalidation
+cache_status: miss
+message: The data was updated.
+
+GET /performance
+uncached_response_time_ms: 51.12
+cached_response_time_ms: 0.92
+result: Cached response avoids repeated data retrieval.
+
+Redis unavailable example:
+HTTP 503
+Redis is unavailable. Start Redis and try again.
+
+API stopped safely with Ctrl+C.

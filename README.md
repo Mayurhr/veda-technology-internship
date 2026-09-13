@@ -26,6 +26,7 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 18 | Log Monitoring and Alert System | Completed |
 | Day 19 | Multi-User Task Management API | Completed |
 | Day 20 | API Rate Limiting | Completed |
+| Day 21 | API Caching Layer | Completed |
 
 ## Repository Structure
 
@@ -164,5 +165,12 @@ veda-technology-internship/
 │       ├── requirements.txt
 │       ├── README.md
 │       └── sample_output.txt
+│
+├── Day-21/
+│   └── API-Caching-Layer/
+│       ├── api_cache.py
+│       ├── README.md
+│       ├── sample_output.txt
+│       └── performance_comparison.txt
 │
 └── README.md

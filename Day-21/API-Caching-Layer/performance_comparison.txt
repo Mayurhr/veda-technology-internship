@@ -1,0 +1,21 @@
+API Caching Performance Comparison
+===================================
+
+Test setup:
+- FastAPI endpoint: GET /data
+- Redis cache key: sample_api_data
+- Cache expiration: 30 seconds
+- Measurements are example local test results, not fixed guarantees.
+
+Before caching:
+- Data retrieval included a small source delay.
+- Measured response time: 53.41 ms
+- Cache status: not applicable
+
+After caching:
+- First request stored the response in Redis.
+- Repeated cached request response time: 1.28 ms
+- Cache status: hit
+
+Result:
+The cached request was faster in this test because it avoided repeated data retrieval. Actual response times depend on the computer, network, and Redis server location.
