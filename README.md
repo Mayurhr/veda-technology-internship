@@ -27,6 +27,7 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 19 | Multi-User Task Management API | Completed |
 | Day 20 | API Rate Limiting | Completed |
 | Day 21 | API Caching Layer | Completed |
+| Day 22 | Background Job Processor | Completed |
 
 ## Repository Structure
 
@@ -172,5 +173,12 @@ veda-technology-internship/
 │       ├── README.md
 │       ├── sample_output.txt
 │       └── performance_comparison.txt
+│
+├── Day-22/
+│   └── Background-Job-Processor/
+│       ├── background_job.py
+│       ├── README.md
+│       ├── sample_output.txt
+│       └── execution.log
 │
 └── README.md

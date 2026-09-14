@@ -1,0 +1,12 @@
+2026-09-14 09:00:00,000 - INFO - Job submitted - job_id=job-a1b2c3d4 report=sales_report
+2026-09-14 09:00:00,010 - INFO - Job started - job_id=job-a1b2c3d4 report=sales_report
+2026-09-14 09:00:03,011 - INFO - Job completed - job_id=job-a1b2c3d4 report=sales_report
+2026-09-14 09:01:00,000 - INFO - Job submitted - job_id=job-e5f6g7h8 report=failed_report
+2026-09-14 09:01:00,010 - INFO - Job started - job_id=job-e5f6g7h8 report=failed_report
+2026-09-14 09:01:03,011 - ERROR - Job failed - job_id=job-e5f6g7h8 error=The report generation was requested to fail.
+2026-09-14 20:12:12,275 - INFO - Job submitted - job_id=job-59a21d90 report=live_sales_report
+2026-09-14 20:12:12,278 - INFO - Job started - job_id=job-59a21d90 report=live_sales_report
+2026-09-14 20:12:15,279 - INFO - Job completed - job_id=job-59a21d90 report=live_sales_report
+2026-09-14 20:12:16,748 - INFO - Job submitted - job_id=job-8ef6d8ee report=failed_live_report
+2026-09-14 20:12:16,754 - INFO - Job started - job_id=job-8ef6d8ee report=failed_live_report
+2026-09-14 20:12:19,755 - ERROR - Job failed - job_id=job-8ef6d8ee error=The report generation was requested to fail.

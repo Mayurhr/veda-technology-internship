@@ -1,0 +1,17 @@
+Background Job Processor Started
+
+Job submitted successfully
+Job ID: job-a1b2c3d4
+Status: queued
+Response returned immediately while the report was processing.
+
+Job started
+Job ID: job-a1b2c3d4
+Status: running
+
+Job completed successfully
+Job ID: job-a1b2c3d4
+Status: completed
+Result: Report 'sales_report' generated successfully.
+
+Job status checked successfully
