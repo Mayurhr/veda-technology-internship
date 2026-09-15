@@ -1,0 +1,23 @@
+Concurrent URL Checker
+======================================================================
+URL: https://example.com
+Status: Available (HTTP 200)
+Response time: 0.42 seconds
+----------------------------------------------------------------------
+URL: https://www.python.org
+Status: Available (HTTP 200)
+Response time: 0.68 seconds
+----------------------------------------------------------------------
+URL: https://httpbin.org/status/200
+Status: Available (HTTP 200)
+Response time: 0.91 seconds
+----------------------------------------------------------------------
+URL: https://invalid.example
+Status: Failed (Connection error)
+Response time: 0.14 seconds
+----------------------------------------------------------------------
+Summary
+Total URLs checked: 4
+Successful URLs: 3
+Failed URLs: 1
+Average response time: 0.54 seconds
