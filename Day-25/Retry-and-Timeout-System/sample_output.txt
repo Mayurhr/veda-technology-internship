@@ -1,0 +1,17 @@
+Retry and Timeout System for API Calls
+=======================================
+Request started: GET https://httpbin.org/get
+Attempt 1 - timeout=5 seconds
+Successful request: HTTP 200
+
+Request started: GET https://httpbin.org/status/503
+Attempt 1 - timeout=5 seconds
+Retrying after HTTP 503 - retry=1 delay=0.5 seconds
+Attempt 2 - timeout=5 seconds
+Retrying after HTTP 503 - retry=2 delay=1.0 seconds
+Attempt 3 - timeout=5 seconds
+Retrying after HTTP 503 - retry=3 delay=2.0 seconds
+Attempt 4 - timeout=5 seconds
+Temporary failure handled: HTTP 503
+
+This is realistic example output. It is not an exact live result.
