@@ -4,7 +4,8 @@
 2026-09-18 20:00:00,016 - INFO - Validation result: passed
 2026-09-18 20:00:00,020 - INFO - Final record count: 4
 2026-09-18 20:00:00,021 - INFO - Pipeline completed successfully
-2026-09-18 20:01:00,000 - ERROR - Example validation failure: negative value found in column: quantity2026-09-18 19:47:55,834 - INFO - Pipeline started
+2026-09-18 20:01:00,000 - ERROR - Example validation failure: negative value found in column: quantity
+2026-09-18 19:47:55,834 - INFO - Pipeline started
 2026-09-18 19:47:55,975 - INFO - Raw record count: 6
 2026-09-18 19:47:56,083 - INFO - Transformed record count: 4
 2026-09-18 19:47:56,105 - INFO - Validation result: passed
@@ -24,3 +25,15 @@
 2026-09-18 19:48:12,118 - INFO - Pipeline completed successfully
 2026-09-18 19:48:14,667 - INFO - Raw record count: 6
 2026-09-18 19:48:14,691 - INFO - Transformed record count: 1
+2026-09-18 20:38:40,914 - INFO - Pipeline started
+2026-09-18 20:38:41,043 - INFO - Raw record count: 6
+2026-09-18 20:38:41,098 - INFO - Transformed record count: 4
+2026-09-18 20:38:41,116 - INFO - Validation result: passed
+2026-09-18 20:38:41,119 - INFO - Final record count: 4
+2026-09-18 20:38:41,145 - INFO - Pipeline completed successfully
+2026-09-18 20:38:42,920 - INFO - Pipeline started
+2026-09-18 20:38:42,951 - INFO - Raw record count: 6
+2026-09-18 20:38:42,974 - INFO - Transformed record count: 4
+2026-09-18 20:38:42,996 - INFO - Validation result: passed
+2026-09-18 20:38:43,011 - INFO - Final record count: 4
+2026-09-18 20:38:43,045 - INFO - Pipeline completed successfully
