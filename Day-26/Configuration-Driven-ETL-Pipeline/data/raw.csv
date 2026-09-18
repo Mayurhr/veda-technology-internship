@@ -1,0 +1,7 @@
+order_id,customer,category,quantity,unit_price,status
+1001, Alice Johnson , laptop ,2,750.00,completed
+1002,Bob Smith,keyboard,1,45.50,pending
+1003,Carol Lee, monitor ,1,220.00,completed
+1004,David Kumar,mouse,3,25.00,completed
+1005,Emma Brown, webcam ,1,80.00,cancelled
+1006,Frank Wilson,headset,2,60.00,completed

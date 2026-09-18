@@ -1,0 +1,5 @@
+order_id,customer,category,quantity,unit_price,status,total_value
+1001,Alice Johnson,LAPTOP,2,750.0,completed,1500.0
+1003,Carol Lee,MONITOR,1,220.0,completed,220.0
+1004,David Kumar,MOUSE,3,25.0,completed,75.0
+1006,Frank Wilson,HEADSET,2,60.0,completed,120.0

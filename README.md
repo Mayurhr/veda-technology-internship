@@ -30,6 +30,7 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 22 | Background Job Processor | Completed |
 | Day 23 | Concurrent URL Checker | Completed |
 | Day 25 | Retry and Timeout System for API Calls | Completed |
+| Day 26 | Configuration-Driven ETL Pipeline | Completed |
 
 ## Repository Structure
 
@@ -195,5 +196,17 @@ veda-technology-internship/
 │       ├── README.md
 │       ├── sample_output.txt
 │       └── execution.log
+│
+├── Day-26/
+│   └── Configuration-Driven-ETL-Pipeline/
+│       ├── etl_pipeline.py
+│       ├── config.json
+│       ├── data/
+│       │   ├── raw.csv
+│       │   ├── transformed.csv
+│       │   └── final.csv
+│       ├── pipeline.log
+│       ├── README.md
+│       └── sample_output.txt
 │
 └── README.md

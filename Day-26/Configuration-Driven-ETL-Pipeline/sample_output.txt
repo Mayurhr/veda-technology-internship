@@ -1,0 +1,7 @@
+Pipeline started
+Raw record count: 6
+Transformed record count: 4
+Validation result: passed
+Final record count: 4
+Pipeline completed successfully
+ETL pipeline completed successfully.

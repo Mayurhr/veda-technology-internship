@@ -1,0 +1,33 @@
+{
+  "paths": {
+    "input": "data/raw.csv",
+    "transformed": "data/transformed.csv",
+    "final": "data/final.csv"
+  },
+  "transformations": {
+    "strip_text": true,
+    "text_columns": ["customer", "category", "status"],
+    "uppercase_category": true,
+    "category_column": "category",
+    "status_filter": "completed",
+    "status_column": "status",
+    "add_total_value": true,
+    "quantity_column": "quantity",
+    "unit_price_column": "unit_price",
+    "total_column": "total_value"
+  },
+  "validation": {
+    "required_columns": [
+      "order_id",
+      "customer",
+      "category",
+      "quantity",
+      "unit_price",
+      "status",
+      "total_value"
+    ],
+    "no_null_columns": ["order_id", "customer", "total_value"],
+    "non_negative_columns": ["quantity", "unit_price", "total_value"],
+    "minimum_rows": 1
+  }
+}
