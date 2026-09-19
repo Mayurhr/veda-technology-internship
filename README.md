@@ -31,6 +31,7 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 23 | Concurrent URL Checker | Completed |
 | Day 25 | Retry and Timeout System for API Calls | Completed |
 | Day 26 | Configuration-Driven ETL Pipeline | Completed |
+| Day 27 | Data Quality Reporting Tool | Completed |
 
 ## Repository Structure
 
@@ -209,4 +210,13 @@ veda-technology-internship/
 │       ├── README.md
 │       └── sample_output.txt
 │
+├── Day-27/
+│   └── Data-Quality-Reporting-Tool/
+│       ├── data_quality_report.py
+│       ├── sample_data.csv
+│       ├── quality_report.txt
+│       ├── invalid_records.csv
+│       ├── sample_output.txt
+│       └── README.md
+
 └── README.md

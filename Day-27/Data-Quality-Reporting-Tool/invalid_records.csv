@@ -1,0 +1,7 @@
+source_row,record_id,customer_name,email,age,order_amount,account_status
+3,1002,Daniel Smith,daniel@example.com,34,89.99,active
+4,1003,Meera Patel,,29,210.0,active
+5,1004,John Williams,john@example.com,unknown,75.25,active
+6,1005,Sofia Garcia,sofia@example.com,41,-15.0,active
+7,1006,Liam Brown,liam@example.com,37,64.5,invalid
+8,1002,Daniel Smith,daniel@example.com,34,89.99,active

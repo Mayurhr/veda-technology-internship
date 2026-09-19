@@ -1,0 +1,5 @@
+﻿Data-quality report generated successfully.
+Records analyzed: 8
+Columns analyzed: 6
+Quality report: quality_report.txt
+Invalid records: invalid_records.csv

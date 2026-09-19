@@ -1,0 +1,52 @@
+DATA QUALITY REPORT
+===================
+Total records: 8
+Total columns: 6
+
+Missing values by column:
+  - record_id: 0
+  - customer_name: 0
+  - email: 1
+  - age: 0
+  - order_amount: 0
+  - account_status: 0
+
+Duplicate record count: 1
+
+Data types:
+  - record_id: int64
+  - customer_name: str
+  - email: str
+  - age: str
+  - order_amount: float64
+  - account_status: str
+
+Unexpected or mixed data types:
+  - age: mixed values (7 numeric, 1 non-numeric)
+
+Unique-value counts:
+  - record_id: 7
+  - customer_name: 7
+  - email: 6
+  - age: 7
+  - order_amount: 7
+  - account_status: 2
+
+Completeness metrics (% non-missing):
+  - record_id: 100.0
+  - customer_name: 100.0
+  - email: 87.5
+  - age: 100.0
+  - order_amount: 100.0
+  - account_status: 100.0
+
+Uniqueness metrics (% unique non-missing):
+  - record_id: 87.5
+  - customer_name: 87.5
+  - email: 75.0
+  - age: 87.5
+  - order_amount: 87.5
+  - account_status: 25.0
+
+Suspicious or invalid records: 6
+Invalid records saved to: C:\Users\DELL\OneDrive\Dokumen\veda-technology-internship\Day-27\Data-Quality-Reporting-Tool\invalid_records.csv

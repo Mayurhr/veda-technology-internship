@@ -1,0 +1,9 @@
+record_id,customer_name,email,age,order_amount,account_status
+1001,Aisha Khan,aisha@example.com,28,125.50,active
+1002,Daniel Smith,daniel@example.com,34,89.99,active
+1003,Meera Patel,,29,210.00,active
+1004,John Williams,john@example.com,unknown,75.25,active
+1005,Sofia Garcia,sofia@example.com,41,-15.00,active
+1006,Liam Brown,liam@example.com,37,64.50,invalid
+1002,Daniel Smith,daniel@example.com,34,89.99,active
+1008,Noah Wilson,noah@example.com,26,310.75,active
