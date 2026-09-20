@@ -1,0 +1,11 @@
+customer_id,customer_name,email,phone,city,total_spent
+1001,Aisha Khan,aisha@example.com,+91 98765 43210,New Delhi,1250.50
+1002,Daniel Smith,daniel@example.com,555-0102,New York,890.00
+1003,Meera Patel,meera.patel@example.com,555-0103,Mumbai,2100.75
+1004,John Williams,john.williams@example.com,555-0104,Chicago,750.25
+1005,Sofia Garcia,sofia@example.com,555-0105,Miami,640.50
+1006,Liam Brown,liam@example.com,555-0106,Seattle,420.00
+1007,Aisha Khan,aisha@example.com,+91 98765 43210,New Delhi,1250.50
+1008,  AISHA   KHAN  , Aisha@Example.com ,9876543210,new   delhi,1250.50
+1009,Jon Williams,john.williams@example.com,555-0104,Chicago,750.25
+1010,Meera Patell,meera.patel@example.com,555-0103,Mumbai,2100.75

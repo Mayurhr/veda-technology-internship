@@ -1,0 +1,7 @@
+DUPLICATE RECORD DETECTION REPORT
+=================================
+Total records: 10
+Exact duplicate records found: 3
+Potential duplicate pairs found: 2
+Cleaned record count: 8
+Duplicate detection completed successfully.

@@ -32,6 +32,7 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 25 | Retry and Timeout System for API Calls | Completed |
 | Day 26 | Configuration-Driven ETL Pipeline | Completed |
 | Day 27 | Data Quality Reporting Tool | Completed |
+| Day 28 | Duplicate Record Detection System | Completed |
 
 ## Repository Structure
 
@@ -216,6 +217,16 @@ veda-technology-internship/
 │       ├── sample_data.csv
 │       ├── quality_report.txt
 │       ├── invalid_records.csv
+│       ├── sample_output.txt
+│       └── README.md
+
+├── Day-28/
+│   └── Duplicate-Record-Detection-System/
+│       ├── duplicate_detector.py
+│       ├── sample_data.csv
+│       ├── exact_duplicates.csv
+│       ├── potential_duplicates.csv
+│       ├── cleaned_data.csv
 │       ├── sample_output.txt
 │       └── README.md
 
