@@ -1,0 +1,15 @@
+Quarterly Sales Report
+Report Date: 21 September 2026
+
+Report Period: 05 Jan 2026 to 31 Mar 2026
+Total Orders: 24
+Total Units Sold: 335
+Total Revenue: $37,303.93
+Average Order Value: $1,554.33
+Top Product: Laptop ($17,980.00)
+Top Region: North ($13,271.90)
+Revenue by Category:
+  Computers: $17,980.00
+  Accessories: $9,102.39
+  Furniture: $5,172.54
+  Displays: $5,049.00
