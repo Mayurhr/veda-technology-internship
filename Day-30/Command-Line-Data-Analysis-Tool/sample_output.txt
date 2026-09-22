@@ -1,0 +1,101 @@
+$ python data_analysis_cli.py --help
+usage: data_analysis_cli.py [-h] [--summary] [--filter COLUMN VALUE]
+                            [--group COLUMN] [--stats COLUMN]
+                            csv_path
+
+A simple command-line tool to analyze CSV data using Pandas.
+
+positional arguments:
+  csv_path              Path to the CSV file to analyze (required, not
+                        hardcoded).
+
+options:
+  -h, --help            show this help message and exit
+  --summary             Show an overview of the dataset (rows, columns,
+                        preview).
+  --filter COLUMN VALUE
+                        Filter rows where COLUMN equals VALUE, e.g. --filter
+                        region North
+  --group COLUMN        Group rows by COLUMN and show counts/totals, e.g.
+                        --group category
+  --stats COLUMN        Show statistics (mean, min, max, etc.) for a numeric
+                        COLUMN, e.g. --stats sales
+
+Examples:
+  python data_analysis_cli.py sample_data.csv --summary
+  python data_analysis_cli.py sample_data.csv --filter region North
+  python data_analysis_cli.py sample_data.csv --group category
+  python data_analysis_cli.py sample_data.csv --stats sales
+
+========================================================================
+$ python data_analysis_cli.py sample_data.csv --summary
+Dataset loaded successfully.
+Rows: 15
+Columns: 7
+
+Column names and types:
+  - customer (str)
+  - product (str)
+  - category (str)
+  - quantity (int64)
+  - price (float64)
+  - region (str)
+  - sales (float64)
+
+Preview (first 5 rows):
+    customer        product    category  quantity  price region  sales
+  Ravi Kumar Wireless Mouse Electronics         3  15.50  North  46.50
+Anita Sharma   Office Chair   Furniture         1  89.99  South  89.99
+John Mathews   Notebook Set  Stationery        10   2.25   East  22.50
+  Priya Nair Wireless Mouse Electronics         2  15.50   West  31.00
+  Suresh Rao      Desk Lamp   Furniture         4  18.75  North  75.00
+
+Analysis completed successfully.
+
+========================================================================
+$ python data_analysis_cli.py sample_data.csv --filter region North
+Filtered results where 'region' == 'North':
+    customer        product    category  quantity  price region  sales
+  Ravi Kumar Wireless Mouse Electronics         3  15.50  North  46.50
+  Suresh Rao      Desk Lamp   Furniture         4  18.75  North  75.00
+ Arjun Singh      Desk Lamp   Furniture         3  18.75  North  56.25
+Vikram Joshi   Office Chair   Furniture         1  89.99  North  89.99
+
+4 matching row(s) found.
+Analysis completed successfully.
+
+========================================================================
+$ python data_analysis_cli.py sample_data.csv --group category
+Grouped results by 'category':
+             row_count  total_sales
+category                           
+Electronics          6       425.00
+Furniture            6       528.71
+Stationery           3       101.25
+
+Analysis completed successfully.
+
+========================================================================
+$ python data_analysis_cli.py sample_data.csv --stats sales
+Statistics for column 'sales':
+  Count : 15
+  Mean  : 70.33
+  Std   : 42.88
+  Min   : 22.50
+  25%   : 41.25
+  50%   : 56.25
+  75%   : 89.99
+  Max   : 179.98
+  Sum   : 1054.96
+
+Analysis completed successfully.
+
+========================================================================
+$ python data_analysis_cli.py missing_file.csv --summary
+Error: File not found: 'missing_file.csv'. Please check the path and try again.
+Exit code: 1
+
+========================================================================
+$ python data_analysis_cli.py sample_data.csv --stats region
+Error: Column 'region' is not numeric, so statistics cannot be calculated on it.
+Exit code: 1

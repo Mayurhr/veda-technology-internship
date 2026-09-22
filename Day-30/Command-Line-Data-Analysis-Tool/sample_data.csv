@@ -1,0 +1,16 @@
+customer,product,category,quantity,price,region,sales
+Ravi Kumar,Wireless Mouse,Electronics,3,15.50,North,46.50
+Anita Sharma,Office Chair,Furniture,1,89.99,South,89.99
+John Mathews,Notebook Set,Stationery,10,2.25,East,22.50
+Priya Nair,Wireless Mouse,Electronics,2,15.50,West,31.00
+Suresh Rao,Desk Lamp,Furniture,4,18.75,North,75.00
+Meera Iyer,Notebook Set,Stationery,15,2.25,South,33.75
+David Fernandes,Bluetooth Speaker,Electronics,1,45.00,East,45.00
+Kavya Reddy,Office Chair,Furniture,2,89.99,West,179.98
+Arjun Singh,Desk Lamp,Furniture,3,18.75,North,56.25
+Neha Verma,Bluetooth Speaker,Electronics,2,45.00,South,90.00
+Rahul Gupta,Notebook Set,Stationery,20,2.25,East,45.00
+Pooja Patel,Wireless Mouse,Electronics,5,15.50,West,77.50
+Vikram Joshi,Office Chair,Furniture,1,89.99,North,89.99
+Sneha Kulkarni,Desk Lamp,Furniture,2,18.75,South,37.50
+Amit Desai,Bluetooth Speaker,Electronics,3,45.00,East,135.00
