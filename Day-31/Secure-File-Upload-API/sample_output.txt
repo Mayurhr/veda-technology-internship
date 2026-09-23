@@ -1,0 +1,74 @@
+Secure File Upload API - Sample Output
+========================================
+
+1. GET /
+----------
+Request:
+    GET http://127.0.0.1:8000/
+
+Response (200 OK):
+{
+    "status": "ok",
+    "message": "Secure File Upload API is running"
+}
+
+
+2. POST /upload - Successful upload (.txt file)
+-------------------------------------------------
+Request:
+    POST http://127.0.0.1:8000/upload
+    file: hello.txt
+
+Response (200 OK):
+{
+    "success": true,
+    "original_filename": "hello.txt",
+    "stored_filename": "3f2b9a7c8e1d4a6b9c0f5e2d7a8b1c3d.txt",
+    "file_size_bytes": 11,
+    "message": "File uploaded successfully"
+}
+
+
+3. POST /upload - Invalid file type (.exe file)
+-------------------------------------------------
+Request:
+    POST http://127.0.0.1:8000/upload
+    file: malware.exe
+
+Response (400 Bad Request):
+{
+    "detail": "File type not allowed"
+}
+
+
+4. POST /upload - Oversized file (> 5 MB)
+---------------------------------------------
+Request:
+    POST http://127.0.0.1:8000/upload
+    file: big_file.txt (5,242,881 bytes)
+
+Response (413 Payload Too Large):
+{
+    "detail": "File size exceeds the allowed limit"
+}
+
+
+5. POST /upload - Path traversal attempt in filename
+--------------------------------------------------------
+Request:
+    POST http://127.0.0.1:8000/upload
+    file: ../../test.txt
+
+Response (200 OK):
+{
+    "success": true,
+    "original_filename": "../../test.txt",
+    "stored_filename": "9a1c4d7e2b3f4a5c8d6e0f1a2b3c4d5e.txt",
+    "file_size_bytes": 4,
+    "message": "File uploaded successfully"
+}
+
+Note: even though the original filename contains "../../", the server
+never uses that value to build the stored path. A new random filename
+is generated instead, so the file is safely written inside the
+uploads/ directory only.
