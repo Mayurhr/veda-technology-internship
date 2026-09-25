@@ -1,22 +1,3 @@
-"""Student Result & Grade Management System.
-
-A simple command-line application to manage student records, marks,
-grades and a class performance summary.
-
-Grading system (based on percentage):
-    90 - 100 : A+
-    80 - 89  : A
-    70 - 79  : B
-    60 - 69  : C
-    50 - 59  : D
-    Below 50 : F
-"""
-
-students = {}
-
-
-# ---------- Calculation functions ----------
-
 def calculate_total(marks):
     """Return the sum of all marks in a dictionary {subject: mark}."""
     return sum(marks.values())
@@ -67,6 +48,120 @@ def format_number(value):
     return str(int(value)) if value == int(value) else str(value)
 
 
+# ---------- Student (OOP model) ----------
+
+class Student:
+    """A single student's record.
+
+    Holds the student's id, name and marks, and derives total,
+    percentage and grade from the marks whenever they are needed, so
+    those values can never go out of sync with the marks.
+    """
+
+    def __init__(self, student_id, name, marks):
+        self.id = student_id
+        self.name = name
+        self.marks = dict(marks)
+
+    # --- derived (read-only) properties ---
+
+    @property
+    def subjects(self):
+        return list(self.marks.keys())
+
+    @property
+    def total(self):
+        return calculate_total(self.marks)
+
+    @property
+    def percentage(self):
+        return calculate_percentage(self.marks)
+
+    @property
+    def grade(self):
+        return calculate_grade(self.percentage)
+
+    # --- behaviour ---
+
+    def update_name(self, name):
+        """Replace the student's name (caller validates it's non-empty)."""
+        self.name = name
+
+    def update_marks(self, marks):
+        """Replace all marks; total/percentage/grade recalculate automatically."""
+        self.marks = dict(marks)
+
+    def summary_row(self):
+        """Return the (id, name, total, percentage, grade) tuple used in tables."""
+        return (self.id, self.name, self.total, self.percentage, self.grade)
+
+    def print_details(self):
+        """Print the full per-student view used by Add/Update/Search/View."""
+        print(f"\nStudent ID: {self.id}")
+        print(f"Name: {self.name}")
+        for subject, mark in self.marks.items():
+            print(f"  {subject}: {format_number(mark)}")
+        print(f"Total: {format_number(self.total)}")
+        print(f"Percentage: {self.percentage:.2f}%")
+        print(f"Grade: {self.grade}")
+
+
+class StudentManager:
+    """Owns the collection of students and the operations on it.
+
+    This is the OOP replacement for the old module-level ``students``
+    dictionary: it stores ``Student`` objects keyed by student ID and
+    exposes the same set of operations the CLI needs (add, update,
+    search, view, view all, performance summary).
+    """
+
+    def __init__(self):
+        self._students = {}
+
+    def __len__(self):
+        return len(self._students)
+
+    def exists(self, student_id):
+        return student_id in self._students
+
+    def add(self, student_id, name, marks):
+        student = Student(student_id, name, marks)
+        self._students[student_id] = student
+        return student
+
+    def get(self, student_id):
+        """Return the Student, or None (printing a message) if not found."""
+        student = self._students.get(student_id)
+        if student is None:
+            print(f"Student with ID {student_id or '(empty)'} not found.")
+        return student
+
+    def all(self):
+        return list(self._students.values())
+
+    def clear(self):
+        self._students.clear()
+
+    def print_table(self, students=None):
+        rows = self.all() if students is None else students
+        print(f"{'ID':<8}{'Name':<15}{'Total':<10}{'Percentage':<12}{'Grade'}")
+        print("-" * 50)
+        for s in rows:
+            print(f"{s.id:<8}{s.name:<15}{format_number(s.total):<10}"
+                  f"{s.percentage:<12.2f}{s.grade}")
+
+    def performance_stats(self):
+        """Return (topper, highest_percentage, average_percentage)."""
+        percentages = [s.percentage for s in self._students.values()]
+        topper = max(self._students.values(), key=lambda s: s.percentage)
+        return topper, max(percentages), sum(percentages) / len(percentages)
+
+
+# Single shared manager used by the CLI (equivalent to the old
+# module-level `students` dictionary from the Day 1 version).
+manager = StudentManager()
+
+
 # ---------- Input helpers ----------
 
 def read_marks(subject_names):
@@ -96,28 +191,14 @@ def read_subjects():
             return names
 
 
-# ---------- Student operations ----------
-
-def build_student(student_id, name, marks):
-    """Create a student record with total, percentage and grade calculated."""
-    percentage = calculate_percentage(marks)
-    return {
-        "id": student_id,
-        "name": name,
-        "subjects": list(marks.keys()),
-        "marks": marks,
-        "total": calculate_total(marks),
-        "percentage": percentage,
-        "grade": calculate_grade(percentage),
-    }
-
+# ---------- Student operations (CLI actions) ----------
 
 def add_student():
     student_id = input("Enter Student ID: ").strip().upper()
     if not validate_student_id(student_id):
         print("Invalid Student ID. Use letters and digits only (e.g. S101).")
         return
-    if student_id in students:
+    if manager.exists(student_id):
         print(f"Student ID {student_id} already exists.")
         return
 
@@ -127,79 +208,61 @@ def add_student():
         return
 
     marks = read_marks(read_subjects())
-    students[student_id] = build_student(student_id, name, marks)
+    manager.add(student_id, name, marks)
     print("\nStudent added successfully.")
     view_student(student_id)
 
 
 def update_student():
     student_id = input("Enter Student ID to update: ").strip().upper()
-    student = search_student(student_id)
+    student = manager.get(student_id)
     if student is None:
         return
 
-    new_name = input(f"New name [{student['name']}] (Enter to keep): ").strip()
+    new_name = input(f"New name [{student.name}] (Enter to keep): ").strip()
     if new_name:
-        student["name"] = new_name
+        student.update_name(new_name)
 
     choice = input("Update marks? (y/n): ").strip().lower()
     if choice == "y":
         marks = read_marks(read_subjects())
-        student.update(build_student(student_id, student["name"], marks))
+        student.update_marks(marks)
     print("\nStudent updated successfully.")
     view_student(student_id)
 
 
 def search_student(student_id):
-    """Return the student record, or None (with a message) if not found."""
-    student = students.get(student_id)
-    if student is None:
-        print(f"Student with ID {student_id or '(empty)'} not found.")
-    return student
+    """Return the Student, or None (with a message) if not found."""
+    return manager.get(student_id)
 
 
 def view_student(student_id):
-    student = students.get(student_id)
+    student = manager.get(student_id)
     if student is None:
-        print(f"Student with ID {student_id} not found.")
         return
-    print(f"\nStudent ID: {student['id']}")
-    print(f"Name: {student['name']}")
-    for subject, mark in student["marks"].items():
-        print(f"  {subject}: {format_number(mark)}")
-    print(f"Total: {format_number(student['total'])}")
-    print(f"Percentage: {student['percentage']:.2f}%")
-    print(f"Grade: {student['grade']}")
+    student.print_details()
 
 
 def view_all_students():
-    if not students:
+    if len(manager) == 0:
         print("No students found.")
         return
-    print(f"\n{'ID':<8}{'Name':<15}{'Total':<10}{'Percentage':<12}{'Grade'}")
-    print("-" * 50)
-    for s in students.values():
-        print(f"{s['id']:<8}{s['name']:<15}{format_number(s['total']):<10}"
-              f"{s['percentage']:<12.2f}{s['grade']}")
+    print()
+    manager.print_table()
 
 
 def performance_summary():
-    if not students:
+    if len(manager) == 0:
         print("No students found. Add students first.")
         return
     print("\n===== PERFORMANCE SUMMARY =====")
-    print(f"{'ID':<8}{'Name':<15}{'Total':<10}{'Percentage':<12}{'Grade'}")
-    print("-" * 50)
-    for s in students.values():
-        print(f"{s['id']:<8}{s['name']:<15}{format_number(s['total']):<10}"
-              f"{s['percentage']:<12.2f}{s['grade']}")
+    manager.print_table()
 
-    percentages = [s["percentage"] for s in students.values()]
-    topper = max(students.values(), key=lambda s: s["percentage"])
+    topper, highest, average = manager.performance_stats()
     print("-" * 50)
-    print(f"Number of students: {len(students)}")
-    print(f"Highest percentage: {max(percentages):.2f}% ({topper['name']})")
-    print(f"Average percentage: {sum(percentages) / len(percentages):.2f}%")
+    print(f"Number of students: {len(manager)}")
+    print(f"Highest percentage: {highest:.2f}% ({topper.name})")
+    print(f"Average percentage: {average:.2f}%")
 
 
 # ---------- Menu ----------

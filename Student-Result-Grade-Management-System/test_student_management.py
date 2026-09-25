@@ -38,22 +38,107 @@ class TestValidation(unittest.TestCase):
         self.assertFalse(sm.validate_student_id("S 1!"))
 
 
-class TestStudentRecords(unittest.TestCase):
-    def setUp(self):
-        sm.students.clear()
+class TestStudentClass(unittest.TestCase):
+    """Tests for the Student class introduced on Day 2."""
 
     def test_create_student(self):
         marks = {"Maths": 80, "Science": 90, "English": 70, "History": 85, "CS": 95}
-        sm.students["S101"] = sm.build_student("S101", "Rahul", marks)
-        s = sm.students["S101"]
-        self.assertEqual(s["total"], 420)
-        self.assertEqual(s["percentage"], 84)
-        self.assertEqual(s["grade"], "A")
+        student = sm.Student("S101", "Rahul", marks)
+        self.assertEqual(student.id, "S101")
+        self.assertEqual(student.name, "Rahul")
+        self.assertEqual(student.subjects, ["Maths", "Science", "English", "History", "CS"])
+        self.assertEqual(student.total, 420)
+        self.assertEqual(student.percentage, 84)
+        self.assertEqual(student.grade, "A")
 
-    def test_search_existing_and_missing(self):
-        sm.students["S101"] = sm.build_student("S101", "Rahul", {"Maths": 50})
+    def test_total_calculation(self):
+        student = sm.Student("S1", "A", {"Maths": 50, "Science": 50})
+        self.assertEqual(student.total, 100)
+
+    def test_percentage_calculation(self):
+        student = sm.Student("S1", "A", {"Maths": 60, "Science": 80})
+        self.assertEqual(student.percentage, 70)
+
+    def test_grade_calculation(self):
+        student = sm.Student("S1", "A", {"Maths": 95, "Science": 95})
+        self.assertEqual(student.grade, "A+")
+
+    def test_update_name(self):
+        student = sm.Student("S1", "Old Name", {"Maths": 50})
+        student.update_name("New Name")
+        self.assertEqual(student.name, "New Name")
+
+    def test_update_marks_recalculates_total_percentage_grade(self):
+        student = sm.Student("S1", "A", {"Maths": 40, "Science": 40})
+        self.assertEqual(student.grade, "F")
+        student.update_marks({"Maths": 95, "Science": 95})
+        self.assertEqual(student.total, 190)
+        self.assertEqual(student.percentage, 95)
+        self.assertEqual(student.grade, "A+")
+
+    def test_marks_dict_is_copied_not_shared(self):
+        original_marks = {"Maths": 80}
+        student = sm.Student("S1", "A", original_marks)
+        original_marks["Maths"] = 0
+        self.assertEqual(student.marks["Maths"], 80)
+
+
+class TestStudentManager(unittest.TestCase):
+    """Tests for the StudentManager class introduced on Day 2."""
+
+    def setUp(self):
+        self.manager = sm.StudentManager()
+
+    def test_add_and_exists(self):
+        self.manager.add("S101", "Rahul", {"Maths": 80})
+        self.assertTrue(self.manager.exists("S101"))
+        self.assertEqual(len(self.manager), 1)
+
+    def test_get_existing_and_missing(self):
+        self.manager.add("S101", "Rahul", {"Maths": 50})
+        self.assertIsNotNone(self.manager.get("S101"))
+        self.assertIsNone(self.manager.get("S999"))
+
+    def test_all_returns_every_student(self):
+        self.manager.add("S101", "Rahul", {"Maths": 50})
+        self.manager.add("S102", "Priya", {"Maths": 90})
+        ids = sorted(s.id for s in self.manager.all())
+        self.assertEqual(ids, ["S101", "S102"])
+
+    def test_performance_stats(self):
+        self.manager.add("S101", "Rahul", {"Maths": 50})   # 50%
+        self.manager.add("S102", "Priya", {"Maths": 90})   # 90%
+        topper, highest, average = self.manager.performance_stats()
+        self.assertEqual(topper.name, "Priya")
+        self.assertEqual(highest, 90)
+        self.assertEqual(average, 70)
+
+    def test_update_student_via_manager(self):
+        self.manager.add("S101", "Rahul", {"Maths": 50})
+        student = self.manager.get("S101")
+        student.update_name("Rahul Sharma")
+        student.update_marks({"Maths": 100})
+        self.assertEqual(self.manager.get("S101").name, "Rahul Sharma")
+        self.assertEqual(self.manager.get("S101").grade, "A+")
+
+
+class TestCLIActions(unittest.TestCase):
+    """Tests for the module-level CLI action functions using sm.manager."""
+
+    def setUp(self):
+        sm.manager.clear()
+
+    def test_search_student_existing_and_missing(self):
+        sm.manager.add("S101", "Rahul", {"Maths": 50})
         self.assertIsNotNone(sm.search_student("S101"))
         self.assertIsNone(sm.search_student("S999"))
+
+    def test_performance_summary_no_students_does_not_raise(self):
+        # Should print a message and return, not raise (e.g. ZeroDivisionError).
+        sm.performance_summary()
+
+    def test_view_all_students_no_students_does_not_raise(self):
+        sm.view_all_students()
 
 
 if __name__ == "__main__":
