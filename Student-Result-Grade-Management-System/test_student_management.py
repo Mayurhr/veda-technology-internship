@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 
 import student_management as sm
 
@@ -121,6 +122,22 @@ class TestStudentManager(unittest.TestCase):
         self.assertEqual(self.manager.get("S101").name, "Rahul Sharma")
         self.assertEqual(self.manager.get("S101").grade, "A+")
 
+    def test_add_duplicate_student_id_raises(self):
+        # Day 3: the manager itself refuses a duplicate ID, on top of the
+        # CLI's own exists() check, so it can never overwrite a record.
+        self.manager.add("S101", "Rahul", {"Maths": 50})
+        with self.assertRaises(ValueError):
+            self.manager.add("S101", "Someone Else", {"Maths": 10})
+        # The original record must be unchanged.
+        self.assertEqual(self.manager.get("S101").name, "Rahul")
+
+    def test_performance_stats_on_empty_manager_raises(self):
+        # Day 3: calling performance_stats() directly on an empty manager
+        # has a clear, documented failure mode instead of crashing with a
+        # confusing ZeroDivisionError/ValueError from max()/sum().
+        with self.assertRaises(ValueError):
+            self.manager.performance_stats()
+
 
 class TestCLIActions(unittest.TestCase):
     """Tests for the module-level CLI action functions using sm.manager."""
@@ -139,6 +156,67 @@ class TestCLIActions(unittest.TestCase):
 
     def test_view_all_students_no_students_does_not_raise(self):
         sm.view_all_students()
+
+    def test_add_student_rejects_duplicate_id(self):
+        sm.manager.add("S101", "Rahul", {"Maths": 50})
+        # Re-entering the same ID should be rejected before it ever asks
+        # for a name, so only one input() call ("Enter Student ID") fires.
+        with patch("builtins.input", side_effect=["S101"]):
+            sm.add_student()
+        self.assertEqual(sm.manager.get("S101").name, "Rahul")  # unchanged
+        self.assertEqual(len(sm.manager), 1)
+
+    def test_add_student_rejects_empty_name(self):
+        with patch("builtins.input", side_effect=["S200", "  "]):
+            sm.add_student()
+        self.assertFalse(sm.manager.exists("S200"))
+
+    def test_add_student_rejects_invalid_id(self):
+        with patch("builtins.input", side_effect=["S 1!"]):
+            sm.add_student()
+        self.assertEqual(len(sm.manager), 0)
+
+
+class TestInputValidationLoops(unittest.TestCase):
+    """Marks/subjects (0/100 boundaries, empty & duplicate subjects)."""
+
+    def test_read_marks_accepts_0_and_100_boundaries(self):
+        with patch("builtins.input", side_effect=["0", "100"]):
+            marks = sm.read_marks(["Maths", "Science"])
+        self.assertEqual(marks, {"Maths": 0.0, "Science": 100.0})
+
+    def test_read_marks_rejects_out_of_range_then_accepts(self):
+        with patch("builtins.input", side_effect=["-1", "101", "abc", "75"]):
+            marks = sm.read_marks(["Maths"])
+        self.assertEqual(marks, {"Maths": 75.0})
+
+    def test_read_subjects_rejects_empty_list(self):
+        with patch("builtins.input", side_effect=["   ", "Maths,Science"]):
+            subjects = sm.read_subjects()
+        self.assertEqual(subjects, ["Maths", "Science"])
+
+    def test_read_subjects_rejects_duplicates(self):
+        with patch("builtins.input", side_effect=["Maths,maths", "Maths,Science"]):
+            subjects = sm.read_subjects()
+        self.assertEqual(subjects, ["Maths", "Science"])
+
+
+class TestMainGracefulExit(unittest.TestCase):
+    """Day 3: Ctrl+C / Ctrl+D should exit cleanly, not crash."""
+
+    def test_keyboard_interrupt_is_handled(self):
+        with patch("builtins.input", side_effect=KeyboardInterrupt):
+            try:
+                sm.main()
+            except KeyboardInterrupt:
+                self.fail("main() should catch KeyboardInterrupt, not propagate it.")
+
+    def test_eof_error_is_handled(self):
+        with patch("builtins.input", side_effect=EOFError):
+            try:
+                sm.main()
+            except EOFError:
+                self.fail("main() should catch EOFError, not propagate it.")
 
 
 if __name__ == "__main__":

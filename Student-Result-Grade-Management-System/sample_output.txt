@@ -11,44 +11,29 @@
 
 Enter your choice (1-7): 1
 Enter Student ID: S101
-Enter Name: 
-Name cannot be empty.
-
-===== STUDENT RESULT & GRADE MANAGEMENT SYSTEM =====
-
-1. Add Student
-2. Update Student
-3. Search Student
-4. View Student
-5. View All Students
-6. Performance Summary
-7. Exit
-
-Enter your choice (1-7): 1
-Enter Student ID: S101
-Enter Name: Rahul
+Enter Name: Aditi Sharma
 Enter subjects (comma separated): Maths,Science,English,History,CS
-Enter marks for Maths (0-100): 80
+Enter marks for Maths (0-100): 92
 Enter marks for Science (0-100): abc
 Invalid marks. Enter a number between 0 and 100.
 Enter marks for Science (0-100): 105
 Invalid marks. Enter a number between 0 and 100.
-Enter marks for Science (0-100): 90
-Enter marks for English (0-100): 70
-Enter marks for History (0-100): 85
-Enter marks for CS (0-100): 95
+Enter marks for Science (0-100): 88
+Enter marks for English (0-100): 75
+Enter marks for History (0-100): 90
+Enter marks for CS (0-100): 94
 
 Student added successfully.
 
 Student ID: S101
-Name: Rahul
-  Maths: 80
-  Science: 90
-  English: 70
-  History: 85
-  CS: 95
-Total: 420
-Percentage: 84.00%
+Name: Aditi Sharma
+  Maths: 92
+  Science: 88
+  English: 75
+  History: 90
+  CS: 94
+Total: 439
+Percentage: 87.80%
 Grade: A
 
 ===== STUDENT RESULT & GRADE MANAGEMENT SYSTEM =====
@@ -75,8 +60,24 @@ Student ID S101 already exists.
 6. Performance Summary
 7. Exit
 
-Enter your choice (1-7): 8
-Invalid choice. Please enter a number from 1 to 7.
+Enter your choice (1-7): 1
+Enter Student ID: S102
+Enter Name: Rahul Verma
+Enter subjects (comma separated): Maths,Science,English
+Enter marks for Maths (0-100): 60
+Enter marks for Science (0-100): 55
+Enter marks for English (0-100): 48
+
+Student added successfully.
+
+Student ID: S102
+Name: Rahul Verma
+  Maths: 60
+  Science: 55
+  English: 48
+Total: 163
+Percentage: 54.33%
+Grade: D
 
 ===== STUDENT RESULT & GRADE MANAGEMENT SYSTEM =====
 
@@ -88,24 +89,8 @@ Invalid choice. Please enter a number from 1 to 7.
 6. Performance Summary
 7. Exit
 
-Enter your choice (1-7): 1
-Enter Student ID: S102
-Enter Name: Priya
-Enter subjects (comma separated): Maths,Science,English
-Enter marks for Maths (0-100): 92
-Enter marks for Science (0-100): 88
-Enter marks for English (0-100): 95
-
-Student added successfully.
-
-Student ID: S102
-Name: Priya
-  Maths: 92
-  Science: 88
-  English: 95
-Total: 275
-Percentage: 91.67%
-Grade: A+
+Enter your choice (1-7): 9
+Invalid choice. Please enter a number from 1 to 7.
 
 ===== STUDENT RESULT & GRADE MANAGEMENT SYSTEM =====
 
@@ -122,14 +107,14 @@ Enter Student ID to search: S101
 Student found.
 
 Student ID: S101
-Name: Rahul
-  Maths: 80
-  Science: 90
-  English: 70
-  History: 85
-  CS: 95
-Total: 420
-Percentage: 84.00%
+Name: Aditi Sharma
+  Maths: 92
+  Science: 88
+  English: 75
+  History: 90
+  CS: 94
+Total: 439
+Percentage: 87.80%
 Grade: A
 
 ===== STUDENT RESULT & GRADE MANAGEMENT SYSTEM =====
@@ -157,28 +142,46 @@ Student with ID S999 not found.
 7. Exit
 
 Enter your choice (1-7): 2
-Enter Student ID to update: S101
-New name [Rahul] (Enter to keep): 
+Enter Student ID to update: S102
+New name [Rahul Verma] (Enter to keep): Rahul V.
 Update marks? (y/n): y
-Enter subjects (comma separated): Maths,Science,English,History,CS
-Enter marks for Maths (0-100): 85
-Enter marks for Science (0-100): 90
-Enter marks for English (0-100): 80
-Enter marks for History (0-100): 85
-Enter marks for CS (0-100): 95
+Enter subjects (comma separated): Maths,Science,English
+Enter marks for Maths (0-100): 65
+Enter marks for Science (0-100): 60
+Enter marks for English (0-100): 58
 
 Student updated successfully.
 
-Student ID: S101
-Name: Rahul
-  Maths: 85
-  Science: 90
-  English: 80
-  History: 85
-  CS: 95
-Total: 435
-Percentage: 87.00%
-Grade: A
+Student ID: S102
+Name: Rahul V.
+  Maths: 65
+  Science: 60
+  English: 58
+Total: 183
+Percentage: 61.00%
+Grade: C
+
+===== STUDENT RESULT & GRADE MANAGEMENT SYSTEM =====
+
+1. Add Student
+2. Update Student
+3. Search Student
+4. View Student
+5. View All Students
+6. Performance Summary
+7. Exit
+
+Enter your choice (1-7): 4
+Enter Student ID: S102
+
+Student ID: S102
+Name: Rahul V.
+  Maths: 65
+  Science: 60
+  English: 58
+Total: 183
+Percentage: 61.00%
+Grade: C
 
 ===== STUDENT RESULT & GRADE MANAGEMENT SYSTEM =====
 
@@ -194,8 +197,8 @@ Enter your choice (1-7): 5
 
 ID      Name           Total     Percentage  Grade
 --------------------------------------------------
-S101    Rahul          435       87.00       A
-S102    Priya          275       91.67       A+
+S101    Aditi Sharma   439       87.80       A
+S102    Rahul V.       183       61.00       C
 
 ===== STUDENT RESULT & GRADE MANAGEMENT SYSTEM =====
 
@@ -212,12 +215,12 @@ Enter your choice (1-7): 6
 ===== PERFORMANCE SUMMARY =====
 ID      Name           Total     Percentage  Grade
 --------------------------------------------------
-S101    Rahul          435       87.00       A
-S102    Priya          275       91.67       A+
+S101    Aditi Sharma   439       87.80       A
+S102    Rahul V.       183       61.00       C
 --------------------------------------------------
 Number of students: 2
-Highest percentage: 91.67% (Priya)
-Average percentage: 89.33%
+Highest percentage: 87.80% (Aditi Sharma)
+Average percentage: 74.40%
 
 ===== STUDENT RESULT & GRADE MANAGEMENT SYSTEM =====
 

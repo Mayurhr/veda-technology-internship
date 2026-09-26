@@ -125,6 +125,16 @@ class StudentManager:
         return student_id in self._students
 
     def add(self, student_id, name, marks):
+        """Create and store a new Student. Raises ValueError on a duplicate ID.
+
+        The CLI already checks ``exists()`` before calling this (so it can
+        show a friendly message without asking for name/marks first), but
+        ``add`` also refuses duplicates itself so the manager can never end
+        up in an inconsistent state if it's ever called another way (e.g.
+        directly, or from a test).
+        """
+        if student_id in self._students:
+            raise ValueError(f"Student ID {student_id} already exists.")
         student = Student(student_id, name, marks)
         self._students[student_id] = student
         return student
@@ -151,7 +161,16 @@ class StudentManager:
                   f"{s.percentage:<12.2f}{s.grade}")
 
     def performance_stats(self):
-        """Return (topper, highest_percentage, average_percentage)."""
+        """Return (topper, highest_percentage, average_percentage).
+
+        Raises ValueError if there are no students yet, since "highest" and
+        "average" are meaningless for an empty class. The CLI's
+        ``performance_summary()`` already checks ``len(manager)`` before
+        calling this, so callers see the friendly CLI message rather than
+        this exception during normal use.
+        """
+        if not self._students:
+            raise ValueError("performance_stats() requires at least one student.")
         percentages = [s.percentage for s in self._students.values()]
         topper = max(self._students.values(), key=lambda s: s.percentage)
         return topper, max(percentages), sum(percentages) / len(percentages)
@@ -279,29 +298,34 @@ def show_menu():
 
 
 def main():
-    while True:
-        show_menu()
-        choice = input("\nEnter your choice (1-7): ").strip()
-        if choice == "1":
-            add_student()
-        elif choice == "2":
-            update_student()
-        elif choice == "3":
-            student_id = input("Enter Student ID to search: ").strip().upper()
-            if search_student(student_id):
-                print("Student found.")
-                view_student(student_id)
-        elif choice == "4":
-            view_student(input("Enter Student ID: ").strip().upper())
-        elif choice == "5":
-            view_all_students()
-        elif choice == "6":
-            performance_summary()
-        elif choice == "7":
-            print("Thank you for using the system. Goodbye!")
-            break
-        else:
-            print("Invalid choice. Please enter a number from 1 to 7.")
+    try:
+        while True:
+            show_menu()
+            choice = input("\nEnter your choice (1-7): ").strip()
+            if choice == "1":
+                add_student()
+            elif choice == "2":
+                update_student()
+            elif choice == "3":
+                student_id = input("Enter Student ID to search: ").strip().upper()
+                if search_student(student_id):
+                    print("Student found.")
+                    view_student(student_id)
+            elif choice == "4":
+                view_student(input("Enter Student ID: ").strip().upper())
+            elif choice == "5":
+                view_all_students()
+            elif choice == "6":
+                performance_summary()
+            elif choice == "7":
+                print("Thank you for using the system. Goodbye!")
+                break
+            else:
+                print("Invalid choice. Please enter a number from 1 to 7.")
+    except (KeyboardInterrupt, EOFError):
+        # Ctrl+C / Ctrl+D during any input() call: exit cleanly instead of
+        # showing a traceback.
+        print("\n\nInterrupted. Goodbye!")
 
 
 if __name__ == "__main__":
