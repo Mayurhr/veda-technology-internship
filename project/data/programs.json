@@ -1,0 +1,16 @@
+[
+    {
+        "program_id": "PRG001",
+        "program_name": "Python Programming Internship",
+        "category": "Software Development",
+        "duration": "4 Days",
+        "status": "Active"
+    },
+    {
+        "program_id": "PRG002",
+        "program_name": "Full Stack Web Development",
+        "category": "Software Development",
+        "duration": "6 Weeks",
+        "status": "Active"
+    }
+]

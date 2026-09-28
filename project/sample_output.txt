@@ -1,0 +1,342 @@
+========================================
+Veda Technology Business & Service
+Management System
+========================================
+
+========================================
+Main Menu
+========================================
+1. Program Management
+2. Service Management
+3. Customer / Inquiry Management
+4. Search
+5. Exit
+Enter your choice: 
+========================================
+Program Management
+========================================
+1. Add Program
+2. View Programs
+3. Search Programs
+4. Update Program
+5. Delete Program
+6. Back to Main Menu
+Enter your choice: 
+--- Add New Program ---
+Enter program name: Enter category: Enter duration: Enter status (Active/Inactive): Program added successfully with ID: PRG003
+
+========================================
+Program Management
+========================================
+1. Add Program
+2. View Programs
+3. Search Programs
+4. Update Program
+5. Delete Program
+6. Back to Main Menu
+Enter your choice: 
+--- All Programs ---
+----------------------------------------
+ID       : PRG001
+Name     : Python Programming Internship
+Category : Software Development
+Duration : 4 Days
+Status   : Active
+----------------------------------------
+ID       : PRG002
+Name     : Full Stack Web Development
+Category : Software Development
+Duration : 6 Weeks
+Status   : Active
+----------------------------------------
+ID       : PRG003
+Name     : Cloud DevOps Bootcamp
+Category : Software Development
+Duration : 3 Weeks
+Status   : Active
+
+========================================
+Program Management
+========================================
+1. Add Program
+2. View Programs
+3. Search Programs
+4. Update Program
+5. Delete Program
+6. Back to Main Menu
+Enter your choice: 
+========================================
+Main Menu
+========================================
+1. Program Management
+2. Service Management
+3. Customer / Inquiry Management
+4. Search
+5. Exit
+Enter your choice: 
+========================================
+Service Management
+========================================
+1. Add Service
+2. View Services
+3. Search Services
+4. Update Service
+5. Delete Service
+6. Back to Main Menu
+Enter your choice: 
+--- Add New Service ---
+Enter service name: Enter category: Enter description: Enter status (Active/Inactive): Service added successfully with ID: SVC003
+
+========================================
+Service Management
+========================================
+1. Add Service
+2. View Services
+3. Search Services
+4. Update Service
+5. Delete Service
+6. Back to Main Menu
+Enter your choice: 
+--- All Services ---
+----------------------------------------
+ID          : SVC001
+Name        : Website Development
+Category    : Web Services
+Description : Custom business website design and development
+Status      : Active
+----------------------------------------
+ID          : SVC002
+Name        : Cloud Hosting
+Category    : Infrastructure
+Description : Managed cloud hosting and deployment services
+Status      : Active
+----------------------------------------
+ID          : SVC003
+Name        : Mobile App Development
+Category    : Mobile Services
+Description : Custom Android and iOS app development for startups
+Status      : Active
+
+========================================
+Service Management
+========================================
+1. Add Service
+2. View Services
+3. Search Services
+4. Update Service
+5. Delete Service
+6. Back to Main Menu
+Enter your choice: 
+========================================
+Main Menu
+========================================
+1. Program Management
+2. Service Management
+3. Customer / Inquiry Management
+4. Search
+5. Exit
+Enter your choice: 
+========================================
+Customer / Inquiry Management
+========================================
+1. Add Inquiry
+2. View Inquiries
+3. Search Inquiries
+4. Update Inquiry Status
+5. Back to Main Menu
+Enter your choice: 
+--- Add New Inquiry ---
+Enter customer name: Enter email: Enter service interested in: Enter inquiry message: Inquiry added successfully with ID: INQ002
+
+========================================
+Customer / Inquiry Management
+========================================
+1. Add Inquiry
+2. View Inquiries
+3. Search Inquiries
+4. Update Inquiry Status
+5. Back to Main Menu
+Enter your choice: 
+--- All Inquiries ---
+----------------------------------------
+ID       : INQ001
+Customer : Rohan Sharma
+Email    : rohan.sharma@example.com
+Service  : Website Development
+Message  : Interested in a business website with an admin panel.
+Status   : Open
+----------------------------------------
+ID       : INQ002
+Customer : Anita Verma
+Email    : anita.verma@example.com
+Service  : Mobile App Development
+Message  : Looking for a quote on a cross-platform delivery app.
+Status   : Open
+
+========================================
+Customer / Inquiry Management
+========================================
+1. Add Inquiry
+2. View Inquiries
+3. Search Inquiries
+4. Update Inquiry Status
+5. Back to Main Menu
+Enter your choice: 
+========================================
+Main Menu
+========================================
+1. Program Management
+2. Service Management
+3. Customer / Inquiry Management
+4. Search
+5. Exit
+Enter your choice: 
+========================================
+Search
+========================================
+1. Search Programs by Name
+2. Search Services by Category
+3. Search Inquiries by Customer Name
+4. Filter Records by Status
+5. Back to Main Menu
+Enter your choice: 
+--- Search Programs ---
+Enter program name (or part of it) to search: 
+Found 1 matching program(s):
+----------------------------------------
+ID       : PRG003
+Name     : Cloud DevOps Bootcamp
+Category : Software Development
+Duration : 3 Weeks
+Status   : Active
+
+========================================
+Search
+========================================
+1. Search Programs by Name
+2. Search Services by Category
+3. Search Inquiries by Customer Name
+4. Filter Records by Status
+5. Back to Main Menu
+Enter your choice: 
+--- Search Services ---
+Enter category to search: 
+Found 1 matching service(s):
+----------------------------------------
+ID          : SVC003
+Name        : Mobile App Development
+Category    : Mobile Services
+Description : Custom Android and iOS app development for startups
+Status      : Active
+
+========================================
+Search
+========================================
+1. Search Programs by Name
+2. Search Services by Category
+3. Search Inquiries by Customer Name
+4. Filter Records by Status
+5. Back to Main Menu
+Enter your choice: 
+--- Search Inquiries ---
+Enter customer name (or part of it) to search: 
+Found 1 matching inquiry(ies):
+----------------------------------------
+ID       : INQ002
+Customer : Anita Verma
+Email    : anita.verma@example.com
+Service  : Mobile App Development
+Message  : Looking for a quote on a cross-platform delivery app.
+Status   : Open
+
+========================================
+Search
+========================================
+1. Search Programs by Name
+2. Search Services by Category
+3. Search Inquiries by Customer Name
+4. Filter Records by Status
+5. Back to Main Menu
+Enter your choice: 
+========================================
+Main Menu
+========================================
+1. Program Management
+2. Service Management
+3. Customer / Inquiry Management
+4. Search
+5. Exit
+Enter your choice: 
+========================================
+Program Management
+========================================
+1. Add Program
+2. View Programs
+3. Search Programs
+4. Update Program
+5. Delete Program
+6. Back to Main Menu
+Enter your choice: 
+--- Update Program ---
+Enter Program ID to update: Leave a field blank to keep its current value.
+----------------------------------------
+ID       : PRG003
+Name     : Cloud DevOps Bootcamp
+Category : Software Development
+Duration : 3 Weeks
+Status   : Active
+New name [Cloud DevOps Bootcamp]: New category [Software Development]: New duration [3 Weeks]: New status [Active]: Program updated successfully.
+
+========================================
+Program Management
+========================================
+1. Add Program
+2. View Programs
+3. Search Programs
+4. Update Program
+5. Delete Program
+6. Back to Main Menu
+Enter your choice: 
+========================================
+Main Menu
+========================================
+1. Program Management
+2. Service Management
+3. Customer / Inquiry Management
+4. Search
+5. Exit
+Enter your choice: 
+========================================
+Program Management
+========================================
+1. Add Program
+2. View Programs
+3. Search Programs
+4. Update Program
+5. Delete Program
+6. Back to Main Menu
+Enter your choice: 
+--- Delete Program ---
+Enter Program ID to delete: No program found with ID: PRG999
+
+========================================
+Program Management
+========================================
+1. Add Program
+2. View Programs
+3. Search Programs
+4. Update Program
+5. Delete Program
+6. Back to Main Menu
+Enter your choice: 
+========================================
+Main Menu
+========================================
+1. Program Management
+2. Service Management
+3. Customer / Inquiry Management
+4. Search
+5. Exit
+Enter your choice: 
+Thank you for using Veda Technology
+Business & Service Management System. Goodbye!
