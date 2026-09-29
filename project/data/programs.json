@@ -12,5 +12,12 @@
         "category": "Software Development",
         "duration": "6 Weeks",
         "status": "Active"
+    },
+    {
+        "program_id": "PRG003",
+        "program_name": "Cloud DevOps Bootcamp",
+        "category": "Cloud Computing",
+        "duration": "3 Weeks",
+        "status": "Active"
     }
 ]

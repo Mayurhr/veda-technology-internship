@@ -3,21 +3,20 @@ main.py
 
 Entry point for the Veda Technology Business & Service Management System.
 
-This is Day 1 of a 4-day major project for the Veda Technology
-Python Programming Internship.
-
-Day 1 focuses on a simple, beginner-friendly foundation:
+Day 2 update:
 - Program Management
 - Service Management
 - Customer / Inquiry Management
 - Search and Filtering
 - Basic CRUD with JSON storage
+- Business Reports
 """
 
 import programs
 import services
 import inquiries
 import search
+import reports
 
 
 def print_welcome():
@@ -35,7 +34,8 @@ def print_main_menu():
     print("2. Service Management")
     print("3. Customer / Inquiry Management")
     print("4. Search")
-    print("5. Exit")
+    print("5. Business Reports")
+    print("6. Exit")
 
 
 def main():
@@ -43,22 +43,31 @@ def main():
 
     while True:
         print_main_menu()
+
         choice = input("Enter your choice: ").strip()
 
         if choice == "1":
             programs.program_menu()
+
         elif choice == "2":
             services.service_menu()
+
         elif choice == "3":
             inquiries.inquiry_menu()
+
         elif choice == "4":
             search.search_menu()
+
         elif choice == "5":
+            reports.report_menu()
+
+        elif choice == "6":
             print("\nThank you for using Veda Technology")
             print("Business & Service Management System. Goodbye!")
             break
+
         else:
-            print("Invalid choice. Please select a valid option (1-5).")
+            print("Invalid choice. Please select a valid option (1-6).")
 
 
 if __name__ == "__main__":

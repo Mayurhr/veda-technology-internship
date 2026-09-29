@@ -1,6 +1,9 @@
+
 # Veda Technology Internship
 
-This repository contains the daily tasks and projects completed during my Python Programming internship at Veda Technology.
+This repository contains the daily tasks and major projects completed during my **Python Programming Internship at Veda Technology**.
+
+Throughout this internship, I have worked on Python fundamentals, automation, APIs, data processing, testing, and practical software development.
 
 ## Internship Progress
 
@@ -34,9 +37,72 @@ This repository contains the daily tasks and projects completed during my Python
 | Day 27 | Data Quality Reporting Tool | Completed |
 | Day 28 | Duplicate Record Detection System | Completed |
 
+## Major Projects
+
+In addition to daily programming tasks, the internship includes larger projects developed over multiple days.
+
+| Project | Duration | Progress |
+|---|---|---|
+| Student Result & Grade Management System | 3 Days | Completed |
+| Veda Technology Business & Service Management System | 4 Days | Day 2 of 4 |
+
+### Major Project 1: Student Result & Grade Management System
+
+A Python-based application designed to manage student records, academic results, and grades.
+
+Development stages:
+
+- Day 1: Core application development
+- Day 2: Object-oriented programming and unit testing
+- Day 3: Final improvements, testing, and documentation
+
+Key concepts:
+
+- Python
+- Object-oriented programming
+- Classes and objects
+- Student record management
+- Grade calculation
+- Input validation
+- Unit testing
+
+### Major Project 2: Veda Technology Business & Service Management System
+
+A Python-based command-line application designed to represent the operations of a technology and digital-services organization.
+
+**Duration:** 4 Days  
+**Current Progress:** Day 2
+
+#### Day 1: Core Application
+
+- Program management
+- Service management
+- Customer inquiry management
+- CRUD operations
+- JSON-based persistent storage
+- Basic searching and filtering
+- Input validation
+- Unit testing
+
+#### Day 2: Application Enhancements
+
+- Improved program management
+- Improved service management
+- Full inquiry CRUD operations
+- Advanced searching and filtering
+- Status-based filtering
+- Business summary reports
+- Category-based reports
+- Inquiry status reports
+- Improved JSON storage handling
+- Additional unit tests
+- Updated documentation
+
+Days 3 and 4 will continue extending the existing application.
+
 ## Repository Structure
 
-Each internship task is organized by day.
+The repository is organized into daily tasks and major projects.
 
 ```text
 veda-technology-internship/
@@ -126,7 +192,7 @@ veda-technology-internship/
 │       └── sample_output.txt
 │
 ├── Day-15/
-│   └──  Shopping-Bill-Generator/
+│   └── Shopping-Bill-Generator/
 │       ├── shopping_bill.py
 │       ├── README.md
 │       └── sample_output.txt
@@ -219,7 +285,7 @@ veda-technology-internship/
 │       ├── invalid_records.csv
 │       ├── sample_output.txt
 │       └── README.md
-
+│
 ├── Day-28/
 │   └── Duplicate-Record-Detection-System/
 │       ├── duplicate_detector.py
@@ -229,5 +295,111 @@ veda-technology-internship/
 │       ├── cleaned_data.csv
 │       ├── sample_output.txt
 │       └── README.md
-
+│
+├── Student-Result-Grade-Management-System/
+│   ├── student_management.py
+│   ├── test_student_management.py
+│   ├── README.md
+│   └── sample_output.txt
+│
+├── Veda-Business-Service-Management-System/
+│   ├── main.py
+│   ├── programs.py
+│   ├── services.py
+│   ├── inquiries.py
+│   ├── search.py
+│   ├── reports.py
+│   ├── storage.py
+│   ├── validation.py
+│   ├── test_core.py
+│   ├── sample_output.txt
+│   ├── README.md
+│   └── data/
+│       ├── programs.json
+│       ├── services.json
+│       └── inquiries.json
+│
 └── README.md
+```
+
+## Technologies and Concepts
+
+The internship covers the following technologies and programming concepts:
+
+- Python Programming
+- Object-Oriented Programming
+- File Handling
+- JSON and CSV
+- REST APIs
+- API Authentication
+- API Rate Limiting
+- API Caching
+- Background Processing
+- Concurrent Programming
+- Automation
+- ETL Pipelines
+- Data Validation
+- Data Quality
+- Duplicate Detection
+- Error Handling
+- Unit Testing
+- Git and GitHub
+
+## Running the Projects
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Mayurhr/veda-technology-internship.git
+```
+
+Open the repository:
+
+```bash
+cd veda-technology-internship
+```
+
+Navigate to the required project folder and follow its individual README instructions.
+
+For the Business & Service Management System:
+
+```bash
+python main.py
+```
+
+Run its core unit tests:
+
+```bash
+python -m unittest test_core.py -v
+```
+
+## Learning Outcomes
+
+Through these internship tasks and projects, I have gained practical experience in:
+
+- Developing Python applications
+- Building reusable modules
+- Designing REST APIs
+- Automating repetitive tasks
+- Processing structured data
+- Implementing CRUD operations
+- Writing unit tests
+- Handling errors and validating input
+- Maintaining and extending existing projects
+- Managing code using Git and GitHub
+
+## Conclusion
+
+This repository documents my progress during the Veda Technology Python Programming Internship.
+
+It includes daily programming exercises, automation tasks, API development, data-processing applications, and major projects.
+
+My focus is on improving my programming skills through practical implementation, testing, debugging, and continuous project development.
+
+---
+
+**Developed by Mayur H R**
+
+**Python Programming Intern | Veda Technology**
+
+**GitHub:** https://github.com/Mayurhr/veda-technology-internship
