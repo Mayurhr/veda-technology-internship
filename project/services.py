@@ -1,16 +1,25 @@
 """
 services.py
 
-Handles all Service Management features:
-Add, View, Search, Filter, Update, and Delete digital services.
+Handles Service Management:
+Add, View, Search, Filter, Update, and Delete.
+
+Day 3:
+Uses the Service class from models.py.
 """
 
 import storage
 import validation
+from models import Service
+
 
 FILENAME = "services.json"
 
-VALID_STATUSES = ["Active", "Inactive"]
+VALID_STATUSES = [
+    "Active",
+    "Inactive"
+]
+
 
 DEFAULT_SERVICES = [
     {
@@ -26,19 +35,38 @@ DEFAULT_SERVICES = [
         "category": "Infrastructure",
         "description": "Managed cloud hosting and deployment services",
         "status": "Active"
+    },
+    {
+        "service_id": "SVC003",
+        "service_name": "Mobile App Development",
+        "category": "Mobile Services",
+        "description": "Custom Android and iOS app development for startups",
+        "status": "Active"
     }
 ]
 
 
 def load_services():
-    return storage.load_data(FILENAME, DEFAULT_SERVICES)
+    """Load services from JSON storage."""
+
+    return storage.load_data(
+        FILENAME,
+        DEFAULT_SERVICES
+    )
 
 
 def save_services(services):
-    storage.save_data(FILENAME, services)
+    """Save services to JSON storage."""
+
+    storage.save_data(
+        FILENAME,
+        services
+    )
 
 
 def add_service():
+    """Add a new service."""
+
     services = load_services()
 
     print("\n--- Add New Service ---")
@@ -70,31 +98,41 @@ def add_service():
         status = "Inactive"
 
     else:
-        print("Invalid status. Service was not added.")
+        print(
+            "Invalid status. "
+            "Service was not added."
+        )
         return
 
-    new_service = {
-        "service_id": storage.generate_next_id(
-            services,
-            "service_id",
-            "SVC"
-        ),
-        "service_name": service_name,
-        "category": category,
-        "description": description,
-        "status": status
-    }
+    service_id = storage.generate_next_id(
+        services,
+        "service_id",
+        "SVC"
+    )
 
-    services.append(new_service)
+    service = Service(
+        service_id,
+        service_name,
+        category,
+        description,
+        status
+    )
+
+    services.append(
+        service.to_dict()
+    )
+
     save_services(services)
 
     print(
-        f"Service added successfully with ID: "
-        f"{new_service['service_id']}"
+        f"Service added successfully "
+        f"with ID: {service_id}"
     )
 
 
 def view_services():
+    """Display all services."""
+
     services = load_services()
 
     print("\n--- All Services ---")
@@ -108,15 +146,34 @@ def view_services():
 
 
 def print_service(service):
+    """Display one service."""
+
     print("-" * 50)
-    print(f"ID          : {service.get('service_id', '')}")
-    print(f"Name        : {service.get('service_name', '')}")
-    print(f"Category    : {service.get('category', '')}")
-    print(f"Description : {service.get('description', '')}")
-    print(f"Status      : {service.get('status', '')}")
+    print(
+        f"ID          : "
+        f"{service.get('service_id', '')}"
+    )
+    print(
+        f"Name        : "
+        f"{service.get('service_name', '')}"
+    )
+    print(
+        f"Category    : "
+        f"{service.get('category', '')}"
+    )
+    print(
+        f"Description : "
+        f"{service.get('description', '')}"
+    )
+    print(
+        f"Status      : "
+        f"{service.get('status', '')}"
+    )
 
 
 def search_services():
+    """Search services by name or category."""
+
     services = load_services()
 
     print("\n--- Search Services ---")
@@ -126,27 +183,40 @@ def search_services():
     ).strip().lower()
 
     if not keyword:
-        print("Search keyword cannot be empty.")
+        print(
+            "Search keyword cannot be empty."
+        )
         return
 
     results = [
         service
         for service in services
-        if keyword in service.get("service_name", "").lower()
-        or keyword in service.get("category", "").lower()
+        if keyword in service.get(
+            "service_name", ""
+        ).lower()
+        or keyword in service.get(
+            "category", ""
+        ).lower()
     ]
 
     if not results:
-        print("No matching services found.")
+        print(
+            "No matching services found."
+        )
         return
 
-    print(f"\nFound {len(results)} matching service(s):")
+    print(
+        f"\nFound {len(results)} "
+        f"matching service(s):"
+    )
 
     for service in results:
         print_service(service)
 
 
 def filter_services_by_status():
+    """Filter services by Active or Inactive status."""
+
     services = load_services()
 
     print("\n--- Filter Services by Status ---")
@@ -164,7 +234,9 @@ def filter_services_by_status():
         selected_status = "Inactive"
 
     else:
-        print("Invalid status selection.")
+        print(
+            "Invalid status selection."
+        )
         return
 
     results = [
@@ -189,6 +261,8 @@ def filter_services_by_status():
 
 
 def update_service():
+    """Update an existing service."""
+
     services = load_services()
 
     print("\n--- Update Service ---")
@@ -239,6 +313,17 @@ def update_service():
         "Select status: "
     ).strip()
 
+    if status_choice not in [
+        "",
+        "1",
+        "2",
+        "3"
+    ]:
+        print(
+            "Invalid status selection."
+        )
+        return
+
     if new_name:
         service["service_name"] = new_name
 
@@ -254,19 +339,16 @@ def update_service():
     elif status_choice == "2":
         service["status"] = "Inactive"
 
-    elif status_choice == "3" or status_choice == "":
-        pass
-
-    else:
-        print("Invalid status selection.")
-        return
-
     save_services(services)
 
-    print("Service updated successfully.")
+    print(
+        "Service updated successfully."
+    )
 
 
 def delete_service():
+    """Delete an existing service."""
+
     services = load_services()
 
     print("\n--- Delete Service ---")
@@ -292,11 +374,14 @@ def delete_service():
     print_service(service)
 
     confirmation = input(
-        "Are you sure you want to delete this service? (y/n): "
+        "Are you sure you want to delete "
+        "this service? (y/n): "
     ).strip().lower()
 
     if confirmation != "y":
-        print("Delete operation cancelled.")
+        print(
+            "Delete operation cancelled."
+        )
         return
 
     services.remove(service)
@@ -304,12 +389,16 @@ def delete_service():
     save_services(services)
 
     print(
-        f"Service {service_id} deleted successfully."
+        f"Service {service_id} "
+        f"deleted successfully."
     )
 
 
 def service_menu():
+    """Display the Service Management menu."""
+
     while True:
+
         print("\n========================================")
         print("Service Management")
         print("========================================")

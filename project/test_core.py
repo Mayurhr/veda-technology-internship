@@ -1,208 +1,201 @@
-"""
-test_core.py
-
-Unit tests for the core helper functions:
-- storage.generate_next_id
-- validation.is_valid_email
-- validation.is_not_empty
-- validation.id_exists
-- validation.find_record_by_id
-
-Run with:
-python -m unittest test_core.py -v
-"""
-
 import unittest
 
-import storage
-import validation
+from storage import generate_next_id
+from validation import (
+    is_not_empty,
+    is_valid_email,
+    id_exists,
+    find_record_by_id,
+    is_valid_status
+)
 
 
-class TestStorageHelpers(unittest.TestCase):
-    """Tests for storage helper functions."""
+class TestStorageFunctions(unittest.TestCase):
+    """Test storage-related functions."""
 
-    def test_generate_next_id_empty_list(self):
-        result = storage.generate_next_id(
-            [],
-            "program_id",
-            "PRG"
+    def test_generate_first_id(self):
+        records = []
+
+        result = generate_next_id(
+            records,
+            "PRG",
+            "program_id"
         )
 
         self.assertEqual(result, "PRG001")
 
-    def test_generate_next_id_with_existing_records(self):
+    def test_generate_next_id(self):
         records = [
             {"program_id": "PRG001"},
-            {"program_id": "PRG002"}
+            {"program_id": "PRG002"},
+            {"program_id": "PRG003"}
         ]
 
-        result = storage.generate_next_id(
+        result = generate_next_id(
             records,
-            "program_id",
-            "PRG"
+            "PRG",
+            "program_id"
         )
 
-        self.assertEqual(result, "PRG003")
+        self.assertEqual(result, "PRG004")
 
-    def test_generate_next_id_with_gap(self):
+    def test_generate_id_with_gap(self):
         records = [
             {"program_id": "PRG001"},
             {"program_id": "PRG003"}
         ]
 
-        result = storage.generate_next_id(
+        result = generate_next_id(
             records,
-            "program_id",
-            "PRG"
+            "PRG",
+            "program_id"
         )
 
         self.assertEqual(result, "PRG004")
 
-    def test_generate_next_id_ignores_invalid_ids(self):
+    def test_ignore_invalid_ids(self):
         records = [
             {"program_id": "PRG001"},
             {"program_id": "INVALID"},
             {"program_id": "PRG002"}
         ]
 
-        result = storage.generate_next_id(
+        result = generate_next_id(
             records,
-            "program_id",
-            "PRG"
+            "PRG",
+            "program_id"
         )
 
         self.assertEqual(result, "PRG003")
 
-    def test_generate_service_id(self):
-        records = [
-            {"service_id": "SVC001"},
-            {"service_id": "SVC002"}
-        ]
 
-        result = storage.generate_next_id(
-            records,
-            "service_id",
-            "SVC"
-        )
+class TestValidationFunctions(unittest.TestCase):
+    """Test validation functions."""
 
-        self.assertEqual(result, "SVC003")
-
-
-class TestValidationHelpers(unittest.TestCase):
-    """Tests for validation helper functions."""
-
-    def test_is_not_empty_true(self):
+    def test_not_empty(self):
         self.assertTrue(
-            validation.is_not_empty("Hello")
+            is_not_empty("Python")
         )
 
-    def test_is_not_empty_false_for_blank(self):
+    def test_empty_string(self):
         self.assertFalse(
-            validation.is_not_empty("   ")
+            is_not_empty("")
         )
 
-    def test_is_not_empty_false_for_empty_string(self):
+    def test_spaces_only(self):
         self.assertFalse(
-            validation.is_not_empty("")
+            is_not_empty("   ")
+        )
+
+    def test_none_value(self):
+        self.assertFalse(
+            is_not_empty(None)
         )
 
     def test_valid_email(self):
         self.assertTrue(
-            validation.is_valid_email(
-                "someone@example.com"
-            )
+            is_valid_email("test@example.com")
         )
 
-    def test_invalid_email_missing_at(self):
+    def test_invalid_email(self):
         self.assertFalse(
-            validation.is_valid_email(
-                "someone.example.com"
-            )
+            is_valid_email("testexample.com")
         )
 
-    def test_invalid_email_missing_dot(self):
+    def test_invalid_email_without_domain(self):
         self.assertFalse(
-            validation.is_valid_email(
-                "someone@examplecom"
-            )
+            is_valid_email("test@")
         )
 
-    def test_id_exists_true(self):
+    def test_existing_id(self):
         records = [
-            {"service_id": "SVC001"}
+            {"program_id": "PRG001"},
+            {"program_id": "PRG002"}
         ]
 
         self.assertTrue(
-            validation.id_exists(
+            id_exists(
                 records,
-                "service_id",
-                "SVC001"
+                "program_id",
+                "PRG001"
             )
         )
 
-    def test_id_exists_false(self):
+    def test_non_existing_id(self):
         records = [
-            {"service_id": "SVC001"}
+            {"program_id": "PRG001"},
+            {"program_id": "PRG002"}
         ]
 
         self.assertFalse(
-            validation.id_exists(
+            id_exists(
                 records,
-                "service_id",
-                "SVC999"
+                "program_id",
+                "PRG005"
             )
         )
 
-    def test_find_record_by_id_found(self):
+    def test_case_insensitive_id(self):
+        records = [
+            {"program_id": "PRG001"}
+        ]
+
+        self.assertTrue(
+            id_exists(
+                records,
+                "program_id",
+                "prg001"
+            )
+        )
+
+    def test_find_existing_record(self):
         records = [
             {
-                "inquiry_id": "INQ001",
-                "customer_name": "Rohan"
+                "program_id": "PRG001",
+                "program_name": "Python Programming"
             }
         ]
 
-        result = validation.find_record_by_id(
+        result = find_record_by_id(
             records,
-            "inquiry_id",
-            "INQ001"
+            "program_id",
+            "PRG001"
         )
 
         self.assertIsNotNone(result)
         self.assertEqual(
-            result["customer_name"],
-            "Rohan"
+            result["program_name"],
+            "Python Programming"
         )
 
-    def test_find_record_by_id_not_found(self):
+    def test_find_missing_record(self):
         records = [
-            {
-                "inquiry_id": "INQ001"
-            }
+            {"program_id": "PRG001"}
         ]
 
-        result = validation.find_record_by_id(
+        result = find_record_by_id(
             records,
-            "inquiry_id",
-            "INQ999"
+            "program_id",
+            "PRG999"
         )
 
         self.assertIsNone(result)
 
-    def test_find_record_by_id_case_insensitive(self):
-        records = [
-            {
-                "service_id": "SVC001",
-                "service_name": "Cloud Hosting"
-            }
-        ]
-
-        result = validation.find_record_by_id(
-            records,
-            "service_id",
-            "svc001"
+    def test_valid_status(self):
+        self.assertTrue(
+            is_valid_status(
+                "Active",
+                ["Active", "Inactive"]
+            )
         )
 
-        self.assertIsNotNone(result)
+    def test_invalid_status(self):
+        self.assertFalse(
+            is_valid_status(
+                "Unknown",
+                ["Active", "Inactive"]
+            )
+        )
 
 
 if __name__ == "__main__":

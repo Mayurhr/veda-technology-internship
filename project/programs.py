@@ -1,16 +1,25 @@
 """
 programs.py
 
-Handles Program Management features:
-Add, View, Search, Filter, Update, and Delete programs.
+Handles Program Management:
+Add, View, Search, Filter, Update, and Delete.
+
+Day 3:
+Uses the Program class from models.py.
 """
 
 import storage
 import validation
+from models import Program
+
 
 FILENAME = "programs.json"
 
-VALID_STATUSES = ["Active", "Inactive"]
+VALID_STATUSES = [
+    "Active",
+    "Inactive"
+]
+
 
 DEFAULT_PROGRAMS = [
     {
@@ -26,19 +35,38 @@ DEFAULT_PROGRAMS = [
         "category": "Software Development",
         "duration": "6 Weeks",
         "status": "Active"
+    },
+    {
+        "program_id": "PRG003",
+        "program_name": "Cloud DevOps Bootcamp",
+        "category": "Cloud Computing",
+        "duration": "3 Weeks",
+        "status": "Active"
     }
 ]
 
 
 def load_programs():
-    return storage.load_data(FILENAME, DEFAULT_PROGRAMS)
+    """Load programs from JSON storage."""
+
+    return storage.load_data(
+        FILENAME,
+        DEFAULT_PROGRAMS
+    )
 
 
 def save_programs(programs):
-    storage.save_data(FILENAME, programs)
+    """Save programs to JSON storage."""
+
+    storage.save_data(
+        FILENAME,
+        programs
+    )
 
 
 def add_program():
+    """Add a new program."""
+
     programs = load_programs()
 
     print("\n--- Add New Program ---")
@@ -59,38 +87,52 @@ def add_program():
     print("1. Active")
     print("2. Inactive")
 
-    status_choice = input("Select status: ").strip()
+    status_choice = input(
+        "Select status: "
+    ).strip()
 
     if status_choice == "1":
         status = "Active"
+
     elif status_choice == "2":
         status = "Inactive"
+
     else:
-        print("Invalid status. Program was not added.")
+        print(
+            "Invalid status. "
+            "Program was not added."
+        )
         return
 
-    new_program = {
-        "program_id": storage.generate_next_id(
-            programs,
-            "program_id",
-            "PRG"
-        ),
-        "program_name": program_name,
-        "category": category,
-        "duration": duration,
-        "status": status
-    }
+    program_id = storage.generate_next_id(
+        programs,
+        "program_id",
+        "PRG"
+    )
 
-    programs.append(new_program)
+    program = Program(
+        program_id,
+        program_name,
+        category,
+        duration,
+        status
+    )
+
+    programs.append(
+        program.to_dict()
+    )
+
     save_programs(programs)
 
     print(
-        f"Program added successfully with ID: "
-        f"{new_program['program_id']}"
+        f"Program added successfully "
+        f"with ID: {program_id}"
     )
 
 
 def view_programs():
+    """Display all programs."""
+
     programs = load_programs()
 
     print("\n--- All Programs ---")
@@ -104,15 +146,34 @@ def view_programs():
 
 
 def print_program(program):
-    print("-" * 50)
-    print(f"ID       : {program.get('program_id', '')}")
-    print(f"Name     : {program.get('program_name', '')}")
-    print(f"Category : {program.get('category', '')}")
-    print(f"Duration : {program.get('duration', '')}")
-    print(f"Status   : {program.get('status', '')}")
+    """Display one program."""
+
+    print("-" * 40)
+    print(
+        f"ID       : "
+        f"{program.get('program_id', '')}"
+    )
+    print(
+        f"Name     : "
+        f"{program.get('program_name', '')}"
+    )
+    print(
+        f"Category : "
+        f"{program.get('category', '')}"
+    )
+    print(
+        f"Duration : "
+        f"{program.get('duration', '')}"
+    )
+    print(
+        f"Status   : "
+        f"{program.get('status', '')}"
+    )
 
 
 def search_programs():
+    """Search programs by name or category."""
+
     programs = load_programs()
 
     print("\n--- Search Programs ---")
@@ -122,41 +183,60 @@ def search_programs():
     ).strip().lower()
 
     if not keyword:
-        print("Search keyword cannot be empty.")
+        print(
+            "Search keyword cannot be empty."
+        )
         return
 
     results = [
         program
         for program in programs
-        if keyword in program.get("program_name", "").lower()
-        or keyword in program.get("category", "").lower()
+        if keyword in program.get(
+            "program_name", ""
+        ).lower()
+        or keyword in program.get(
+            "category", ""
+        ).lower()
     ]
 
     if not results:
-        print("No matching programs found.")
+        print(
+            "No matching programs found."
+        )
         return
 
-    print(f"\nFound {len(results)} matching program(s):")
+    print(
+        f"\nFound {len(results)} "
+        f"matching program(s):"
+    )
 
     for program in results:
         print_program(program)
 
 
 def filter_programs_by_status():
+    """Filter programs by Active or Inactive status."""
+
     programs = load_programs()
 
     print("\n--- Filter Programs by Status ---")
     print("1. Active")
     print("2. Inactive")
 
-    choice = input("Select status: ").strip()
+    choice = input(
+        "Select status: "
+    ).strip()
 
     if choice == "1":
         selected_status = "Active"
+
     elif choice == "2":
         selected_status = "Inactive"
+
     else:
-        print("Invalid status selection.")
+        print(
+            "Invalid status selection."
+        )
         return
 
     results = [
@@ -172,13 +252,17 @@ def filter_programs_by_status():
         )
         return
 
-    print(f"\n--- {selected_status} Programs ---")
+    print(
+        f"\n--- {selected_status} Programs ---"
+    )
 
     for program in results:
         print_program(program)
 
 
 def update_program():
+    """Update an existing program."""
+
     programs = load_programs()
 
     print("\n--- Update Program ---")
@@ -194,13 +278,19 @@ def update_program():
     )
 
     if not program:
-        print(f"No program found with ID: {program_id}")
+        print(
+            f"No program found with ID: "
+            f"{program_id}"
+        )
         return
 
     print("\nCurrent program details:")
     print_program(program)
 
-    print("\nLeave a field blank to keep its current value.")
+    print(
+        "\nLeave a field blank to keep "
+        "its current value."
+    )
 
     new_name = input(
         f"New name [{program['program_name']}]: "
@@ -223,6 +313,17 @@ def update_program():
         "Select status: "
     ).strip()
 
+    if status_choice not in [
+        "",
+        "1",
+        "2",
+        "3"
+    ]:
+        print(
+            "Invalid status selection."
+        )
+        return
+
     if new_name:
         program["program_name"] = new_name
 
@@ -238,19 +339,16 @@ def update_program():
     elif status_choice == "2":
         program["status"] = "Inactive"
 
-    elif status_choice == "3" or status_choice == "":
-        pass
-
-    else:
-        print("Invalid status selection.")
-        return
-
     save_programs(programs)
 
-    print("Program updated successfully.")
+    print(
+        "Program updated successfully."
+    )
 
 
 def delete_program():
+    """Delete an existing program."""
+
     programs = load_programs()
 
     print("\n--- Delete Program ---")
@@ -266,18 +364,24 @@ def delete_program():
     )
 
     if not program:
-        print(f"No program found with ID: {program_id}")
+        print(
+            f"No program found with ID: "
+            f"{program_id}"
+        )
         return
 
     print("\nProgram to be deleted:")
     print_program(program)
 
     confirmation = input(
-        "Are you sure you want to delete this program? (y/n): "
+        "Are you sure you want to delete "
+        "this program? (y/n): "
     ).strip().lower()
 
     if confirmation != "y":
-        print("Delete operation cancelled.")
+        print(
+            "Delete operation cancelled."
+        )
         return
 
     programs.remove(program)
@@ -285,12 +389,16 @@ def delete_program():
     save_programs(programs)
 
     print(
-        f"Program {program_id} deleted successfully."
+        f"Program {program_id} "
+        f"deleted successfully."
     )
 
 
 def program_menu():
+    """Display the Program Management menu."""
+
     while True:
+
         print("\n========================================")
         print("Program Management")
         print("========================================")

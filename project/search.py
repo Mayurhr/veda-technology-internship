@@ -1,8 +1,12 @@
 """
 search.py
 
-Provides a combined Search menu that lets the user search
-programs, services, and inquiries, or filter records by status.
+Provides combined search and filtering
+across programs, services, and inquiries.
+
+Day 3:
+Works with the updated Program, Service,
+Customer, and Inquiry management modules.
 """
 
 import programs
@@ -10,155 +14,385 @@ import services
 import inquiries
 
 
-def filter_by_status():
-    print("\n--- Filter Records by Status ---")
-    print("1. Programs")
-    print("2. Services")
-    print("3. Inquiries")
+def search_programs_by_name_or_category():
+    """Search programs by name or category."""
 
-    choice = input(
-        "Choose what to filter (1-3): "
-    ).strip()
+    program_list = programs.load_programs()
 
-    if choice not in ("1", "2", "3"):
-        print("Invalid choice.")
-        return
-
-    print("\nAvailable status examples:")
-    print("Active / Inactive")
-    print("Open / In Progress / Closed")
-
-    status = input(
-        "Enter status to filter by: "
-    ).strip().lower()
-
-    if not status:
-        print("Status cannot be empty.")
-        return
-
-    if choice == "1":
-        records = programs.load_programs()
-
-        results = [
-            record
-            for record in records
-            if record.get("status", "").lower() == status
-        ]
-
-        if not results:
-            print("No programs found with that status.")
-            return
-
-        print(f"\n--- Programs with status: {status.title()} ---")
-
-        for record in results:
-            programs.print_program(record)
-
-    elif choice == "2":
-        records = services.load_services()
-
-        results = [
-            record
-            for record in records
-            if record.get("status", "").lower() == status
-        ]
-
-        if not results:
-            print("No services found with that status.")
-            return
-
-        print(f"\n--- Services with status: {status.title()} ---")
-
-        for record in results:
-            services.print_service(record)
-
-    elif choice == "3":
-        records = inquiries.load_inquiries()
-
-        results = [
-            record
-            for record in records
-            if record.get("status", "").lower() == status
-        ]
-
-        if not results:
-            print("No inquiries found with that status.")
-            return
-
-        print(f"\n--- Inquiries with status: {status.title()} ---")
-
-        for record in results:
-            inquiries.print_inquiry(record)
-
-
-def search_programs_by_category():
-    programs_list = programs.load_programs()
-
-    print("\n--- Search Programs by Category ---")
+    print("\n--- Search Programs ---")
 
     keyword = input(
-        "Enter category (or part of it): "
+        "Enter program name or category: "
     ).strip().lower()
 
     if not keyword:
-        print("Search keyword cannot be empty.")
+        print(
+            "Search keyword cannot be empty."
+        )
         return
 
     results = [
         program
-        for program in programs_list
-        if keyword in program.get("category", "").lower()
+        for program in program_list
+        if keyword in program.get(
+            "program_name", ""
+        ).lower()
+        or keyword in program.get(
+            "category", ""
+        ).lower()
     ]
 
     if not results:
-        print("No programs found in that category.")
+        print(
+            "No matching programs found."
+        )
         return
 
-    print(f"\nFound {len(results)} matching program(s):")
+    print(
+        f"\nFound {len(results)} "
+        f"matching program(s):"
+    )
 
     for program in results:
         programs.print_program(program)
 
 
-def search_services_by_name():
-    services_list = services.load_services()
+def search_programs_by_category():
+    """Search programs by category."""
 
-    print("\n--- Search Services by Name ---")
+    program_list = programs.load_programs()
+
+    print("\n--- Search Programs by Category ---")
+
+    category = input(
+        "Enter category: "
+    ).strip().lower()
+
+    if not category:
+        print(
+            "Category cannot be empty."
+        )
+        return
+
+    results = [
+        program
+        for program in program_list
+        if category in program.get(
+            "category", ""
+        ).lower()
+    ]
+
+    if not results:
+        print(
+            "No matching programs found."
+        )
+        return
+
+    print(
+        f"\nFound {len(results)} "
+        f"matching program(s):"
+    )
+
+    for program in results:
+        programs.print_program(program)
+
+
+def search_services_by_name_or_category():
+    """Search services by name or category."""
+
+    service_list = services.load_services()
+
+    print("\n--- Search Services ---")
 
     keyword = input(
-        "Enter service name (or part of it): "
+        "Enter service name or category: "
     ).strip().lower()
 
     if not keyword:
-        print("Search keyword cannot be empty.")
+        print(
+            "Search keyword cannot be empty."
+        )
         return
 
     results = [
         service
-        for service in services_list
-        if keyword in service.get("service_name", "").lower()
+        for service in service_list
+        if keyword in service.get(
+            "service_name", ""
+        ).lower()
+        or keyword in service.get(
+            "category", ""
+        ).lower()
     ]
 
     if not results:
-        print("No matching services found.")
+        print(
+            "No matching services found."
+        )
         return
 
-    print(f"\nFound {len(results)} matching service(s):")
+    print(
+        f"\nFound {len(results)} "
+        f"matching service(s):"
+    )
 
     for service in results:
         services.print_service(service)
 
 
+def search_services_by_category():
+    """Search services by category."""
+
+    service_list = services.load_services()
+
+    print("\n--- Search Services by Category ---")
+
+    category = input(
+        "Enter category: "
+    ).strip().lower()
+
+    if not category:
+        print(
+            "Category cannot be empty."
+        )
+        return
+
+    results = [
+        service
+        for service in service_list
+        if category in service.get(
+            "category", ""
+        ).lower()
+    ]
+
+    if not results:
+        print(
+            "No matching services found."
+        )
+        return
+
+    print(
+        f"\nFound {len(results)} "
+        f"matching service(s):"
+    )
+
+    for service in results:
+        services.print_service(service)
+
+
+def search_inquiries():
+    """Search inquiries by customer, email, or service."""
+
+    inquiry_list = inquiries.load_inquiries()
+
+    print("\n--- Search Inquiries ---")
+
+    keyword = input(
+        "Enter customer name, email or service: "
+    ).strip().lower()
+
+    if not keyword:
+        print(
+            "Search keyword cannot be empty."
+        )
+        return
+
+    results = [
+        inquiry
+        for inquiry in inquiry_list
+        if keyword in inquiry.get(
+            "customer_name", ""
+        ).lower()
+        or keyword in inquiry.get(
+            "email", ""
+        ).lower()
+        or keyword in inquiry.get(
+            "service", ""
+        ).lower()
+    ]
+
+    if not results:
+        print(
+            "No matching inquiries found."
+        )
+        return
+
+    print(
+        f"\nFound {len(results)} "
+        f"matching inquiry(ies):"
+    )
+
+    for inquiry in results:
+        inquiries.print_inquiry(inquiry)
+
+
+def filter_records_by_status():
+    """Filter programs, services, or inquiries by status."""
+
+    print("\n--- Filter Records by Status ---")
+    print("1. Programs")
+    print("2. Services")
+    print("3. Inquiries")
+
+    record_choice = input(
+        "Select record type: "
+    ).strip()
+
+    if record_choice == "1":
+
+        print("\nProgram Status:")
+        print("1. Active")
+        print("2. Inactive")
+
+        status_choice = input(
+            "Select status: "
+        ).strip()
+
+        if status_choice == "1":
+            status = "Active"
+
+        elif status_choice == "2":
+            status = "Inactive"
+
+        else:
+            print(
+                "Invalid status selection."
+            )
+            return
+
+        records = programs.load_programs()
+
+        results = [
+            program
+            for program in records
+            if program.get("status") == status
+        ]
+
+        if not results:
+            print(
+                f"No programs found with "
+                f"status: {status}"
+            )
+            return
+
+        print(
+            f"\n--- {status} Programs ---"
+        )
+
+        for program in results:
+            programs.print_program(program)
+
+    elif record_choice == "2":
+
+        print("\nService Status:")
+        print("1. Active")
+        print("2. Inactive")
+
+        status_choice = input(
+            "Select status: "
+        ).strip()
+
+        if status_choice == "1":
+            status = "Active"
+
+        elif status_choice == "2":
+            status = "Inactive"
+
+        else:
+            print(
+                "Invalid status selection."
+            )
+            return
+
+        records = services.load_services()
+
+        results = [
+            service
+            for service in records
+            if service.get("status") == status
+        ]
+
+        if not results:
+            print(
+                f"No services found with "
+                f"status: {status}"
+            )
+            return
+
+        print(
+            f"\n--- {status} Services ---"
+        )
+
+        for service in results:
+            services.print_service(service)
+
+    elif record_choice == "3":
+
+        print("\nInquiry Status:")
+        print("1. Open")
+        print("2. In Progress")
+        print("3. Closed")
+
+        status_choice = input(
+            "Select status: "
+        ).strip()
+
+        if status_choice == "1":
+            status = "Open"
+
+        elif status_choice == "2":
+            status = "In Progress"
+
+        elif status_choice == "3":
+            status = "Closed"
+
+        else:
+            print(
+                "Invalid status selection."
+            )
+            return
+
+        records = inquiries.load_inquiries()
+
+        results = [
+            inquiry
+            for inquiry in records
+            if inquiry.get("status") == status
+        ]
+
+        if not results:
+            print(
+                f"No inquiries found with "
+                f"status: {status}"
+            )
+            return
+
+        print(
+            f"\n--- {status} Inquiries ---"
+        )
+
+        for inquiry in results:
+            inquiries.print_inquiry(inquiry)
+
+    else:
+        print(
+            "Invalid record type selection."
+        )
+
+
 def search_menu():
+    """Display the combined Search menu."""
+
     while True:
+
         print("\n========================================")
-        print("Search and Filtering")
+        print("Search")
         print("========================================")
         print("1. Search Programs by Name or Category")
         print("2. Search Programs by Category")
-        print("3. Search Services by Category")
-        print("4. Search Services by Name")
-        print("5. Search Inquiries by Customer, Email or Service")
+        print("3. Search Services by Name or Category")
+        print("4. Search Services by Category")
+        print("5. Search Inquiries")
         print("6. Filter Records by Status")
         print("7. Back to Main Menu")
 
@@ -167,22 +401,22 @@ def search_menu():
         ).strip()
 
         if choice == "1":
-            programs.search_programs()
+            search_programs_by_name_or_category()
 
         elif choice == "2":
             search_programs_by_category()
 
         elif choice == "3":
-            services.search_services()
+            search_services_by_name_or_category()
 
         elif choice == "4":
-            search_services_by_name()
+            search_services_by_category()
 
         elif choice == "5":
-            inquiries.search_inquiries()
+            search_inquiries()
 
         elif choice == "6":
-            filter_by_status()
+            filter_records_by_status()
 
         elif choice == "7":
             break

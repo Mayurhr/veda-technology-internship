@@ -1,16 +1,4 @@
-"""
-main.py
 
-Entry point for the Veda Technology Business & Service Management System.
-
-Day 2 update:
-- Program Management
-- Service Management
-- Customer / Inquiry Management
-- Search and Filtering
-- Basic CRUD with JSON storage
-- Business Reports
-"""
 
 import programs
 import services
@@ -20,6 +8,8 @@ import reports
 
 
 def print_welcome():
+    """Display the application welcome message."""
+
     print("=" * 40)
     print("Veda Technology Business & Service")
     print("Management System")
@@ -27,6 +17,8 @@ def print_welcome():
 
 
 def print_main_menu():
+    """Display the main application menu."""
+
     print("\n========================================")
     print("Main Menu")
     print("========================================")
@@ -39,12 +31,17 @@ def print_main_menu():
 
 
 def main():
+    """Run the main application."""
+
     print_welcome()
 
     while True:
+
         print_main_menu()
 
-        choice = input("Enter your choice: ").strip()
+        choice = input(
+            "Enter your choice: "
+        ).strip()
 
         if choice == "1":
             programs.program_menu()
@@ -62,12 +59,23 @@ def main():
             reports.report_menu()
 
         elif choice == "6":
-            print("\nThank you for using Veda Technology")
-            print("Business & Service Management System. Goodbye!")
+            print(
+                "\nThank you for using "
+                "Veda Technology"
+            )
+
+            print(
+                "Business & Service Management "
+                "System. Goodbye!"
+            )
+
             break
 
         else:
-            print("Invalid choice. Please select a valid option (1-6).")
+            print(
+                "Invalid choice. "
+                "Please select a valid option (1-6)."
+            )
 
 
 if __name__ == "__main__":

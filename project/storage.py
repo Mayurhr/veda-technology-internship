@@ -1,142 +1,171 @@
-"""
-storage.py
-
-Simple helper functions to load and save JSON data files.
-Used by programs.py, services.py, and inquiries.py.
-"""
-
 import json
+import csv
 import os
+
 
 DATA_FOLDER = "data"
 
 
-def load_data(filename, default_data):
+def load_data(filename):
     """
-    Load data from a JSON file inside the data folder.
+    Load records from a JSON file.
 
-    If the file does not exist, it is created
-    with the provided default data.
-
-    If the file contains invalid JSON, the
-    default data is restored.
+    Returns an empty list if the file does not exist
+    or contains invalid data.
     """
 
-    file_path = os.path.join(
-        DATA_FOLDER,
-        filename
-    )
+    os.makedirs(DATA_FOLDER, exist_ok=True)
 
-    # Create data folder if it does not exist
-    if not os.path.exists(DATA_FOLDER):
-        os.makedirs(DATA_FOLDER)
-
-    # Create file with default data if it does not exist
-    if not os.path.exists(file_path):
-        save_data(filename, default_data)
-        return default_data
+    filepath = os.path.join(DATA_FOLDER, filename)
 
     try:
-        with open(
-            file_path,
-            "r",
-            encoding="utf-8"
-        ) as file:
+        if not os.path.exists(filepath):
+            with open(filepath, "w", encoding="utf-8") as file:
+                json.dump([], file, indent=4)
 
+            return []
+
+        with open(filepath, "r", encoding="utf-8") as file:
             data = json.load(file)
 
-            # Make sure the JSON contains a list
-            if not isinstance(data, list):
-                print(
-                    f"Warning: {filename} does not contain "
-                    "valid list data."
-                )
-                save_data(filename, default_data)
-                return default_data
-
+        if isinstance(data, list):
             return data
 
-    except json.JSONDecodeError:
-        print(
-            f"Warning: {filename} contains invalid JSON. "
-            "Resetting to default data."
-        )
+        return []
 
-        save_data(filename, default_data)
-        return default_data
+    except json.JSONDecodeError:
+        print(f"Warning: Invalid JSON data in {filename}.")
+        return []
 
     except OSError as error:
-        print(
-            f"Error reading {filename}: {error}"
-        )
-
-        return default_data
+        print(f"File error while reading {filename}: {error}")
+        return []
 
 
 def save_data(filename, data):
     """
-    Save data to a JSON file inside the data folder.
+    Save records to a JSON file.
     """
 
-    if not os.path.exists(DATA_FOLDER):
-        os.makedirs(DATA_FOLDER)
+    os.makedirs(DATA_FOLDER, exist_ok=True)
 
-    file_path = os.path.join(
-        DATA_FOLDER,
-        filename
-    )
+    filepath = os.path.join(DATA_FOLDER, filename)
 
     try:
+        with open(filepath, "w", encoding="utf-8") as file:
+            json.dump(data, file, indent=4)
+
+        return True
+
+    except OSError as error:
+        print(f"File error while saving {filename}: {error}")
+        return False
+
+
+def load_csv_data(filename):
+    """
+    Load records from a CSV file.
+
+    Returns a list of dictionaries.
+    """
+
+    os.makedirs(DATA_FOLDER, exist_ok=True)
+
+    filepath = os.path.join(DATA_FOLDER, filename)
+
+    try:
+        if not os.path.exists(filepath):
+            return []
+
         with open(
-            file_path,
-            "w",
+            filepath,
+            "r",
+            newline="",
             encoding="utf-8"
         ) as file:
 
-            json.dump(
-                data,
-                file,
-                indent=4
-            )
+            reader = csv.DictReader(file)
+
+            return list(reader)
 
     except OSError as error:
-        print(
-            f"Error saving {filename}: {error}"
-        )
+        print(f"CSV file error while reading {filename}: {error}")
+        return []
 
 
-def generate_next_id(records, id_field, prefix):
+def save_csv_data(filename, data):
     """
-    Generate the next unique ID for a list of record dictionaries.
-
-    Examples:
-        PRG001, PRG002, PRG003
-        SVC001, SVC002, SVC003
-        INQ001, INQ002, INQ003
+    Save records to a CSV file.
     """
 
-    if not records:
-        return f"{prefix}001"
+    os.makedirs(DATA_FOLDER, exist_ok=True)
 
-    max_number = 0
+    filepath = os.path.join(DATA_FOLDER, filename)
+
+    try:
+        if not data:
+            with open(
+                filepath,
+                "w",
+                newline="",
+                encoding="utf-8"
+            ):
+                pass
+
+            return True
+
+        fieldnames = data[0].keys()
+
+        with open(
+            filepath,
+            "w",
+            newline="",
+            encoding="utf-8"
+        ) as file:
+
+            writer = csv.DictWriter(
+                file,
+                fieldnames=fieldnames
+            )
+
+            writer.writeheader()
+            writer.writerows(data)
+
+        return True
+
+    except OSError as error:
+        print(f"CSV file error while saving {filename}: {error}")
+        return False
+
+
+def generate_next_id(records, prefix, field):
+    """
+    Generate the next sequential ID.
+
+    Example:
+    PRG001
+    PRG002
+    PRG003
+    """
+
+    numbers = []
 
     for record in records:
 
-        existing_id = str(
-            record.get(id_field, "")
-        )
+        record_id = str(record.get(field, ""))
 
-        if existing_id.startswith(prefix):
+        if record_id.startswith(prefix):
 
-            number_part = existing_id[
-                len(prefix):
-            ]
-
-            if number_part.isdigit():
-
-                max_number = max(
-                    max_number,
-                    int(number_part)
+            try:
+                number = int(
+                    record_id[len(prefix):]
                 )
 
-    return f"{prefix}{max_number + 1:03d}"
+                numbers.append(number)
+
+            except ValueError:
+                continue
+
+    next_number = max(numbers, default=0) + 1
+
+    return f"{prefix}{next_number:03d}"
