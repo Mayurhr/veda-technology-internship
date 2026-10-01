@@ -1,0 +1,332 @@
+# Sample output: real captured run of `python main.py` (view programs, search "Python", filter Active, view services, filter inquiries In Progress/Open, all reports).
+
+========================================
+Veda Technology Business & Service
+Management System
+========================================
+
+========================================
+Main Menu
+========================================
+1. Program Management
+2. Service Management
+3. Customer / Inquiry Management
+4. Search
+5. Business Reports
+6. Exit
+Enter your choice: 
+========================================
+Program Management
+========================================
+1. Add Program
+2. View Programs
+3. Search Programs
+4. Filter by Status
+5. Update Program
+6. Delete Program
+7. Back to Main Menu
+Enter your choice: 
+--- All Programs ---
+----------------------------------------
+ID       : PRG001
+Name     : Python Programming Internship
+Category : Software Development
+Duration : 4 Days
+Status   : Active
+----------------------------------------
+ID       : PRG002
+Name     : Full Stack Web Development
+Category : Software Development
+Duration : 6 Weeks
+Status   : Active
+----------------------------------------
+ID       : PRG003
+Name     : Cloud DevOps Bootcamp
+Category : Cloud Computing
+Duration : 3 Weeks
+Status   : Active
+
+========================================
+Program Management
+========================================
+1. Add Program
+2. View Programs
+3. Search Programs
+4. Filter by Status
+5. Update Program
+6. Delete Program
+7. Back to Main Menu
+Enter your choice: 
+--- Search Programs ---
+Enter program name or category: 
+Found 1 matching program(s):
+----------------------------------------
+ID       : PRG001
+Name     : Python Programming Internship
+Category : Software Development
+Duration : 4 Days
+Status   : Active
+
+========================================
+Program Management
+========================================
+1. Add Program
+2. View Programs
+3. Search Programs
+4. Filter by Status
+5. Update Program
+6. Delete Program
+7. Back to Main Menu
+Enter your choice: 
+--- Filter Programs by Status ---
+1. Active
+2. Inactive
+Select status: 
+--- Active Programs ---
+----------------------------------------
+ID       : PRG001
+Name     : Python Programming Internship
+Category : Software Development
+Duration : 4 Days
+Status   : Active
+----------------------------------------
+ID       : PRG002
+Name     : Full Stack Web Development
+Category : Software Development
+Duration : 6 Weeks
+Status   : Active
+----------------------------------------
+ID       : PRG003
+Name     : Cloud DevOps Bootcamp
+Category : Cloud Computing
+Duration : 3 Weeks
+Status   : Active
+
+========================================
+Program Management
+========================================
+1. Add Program
+2. View Programs
+3. Search Programs
+4. Filter by Status
+5. Update Program
+6. Delete Program
+7. Back to Main Menu
+Enter your choice: 
+========================================
+Main Menu
+========================================
+1. Program Management
+2. Service Management
+3. Customer / Inquiry Management
+4. Search
+5. Business Reports
+6. Exit
+Enter your choice: 
+========================================
+Service Management
+========================================
+1. Add Service
+2. View Services
+3. Search Services
+4. Filter by Status
+5. Update Service
+6. Delete Service
+7. Back to Main Menu
+Enter your choice: 
+--- All Services ---
+--------------------------------------------------
+ID          : SVC001
+Name        : Website Development
+Category    : Web Services
+Description : Custom business website design and development
+Status      : Active
+--------------------------------------------------
+ID          : SVC002
+Name        : Cloud Hosting
+Category    : Infrastructure
+Description : Managed cloud hosting and deployment services
+Status      : Active
+--------------------------------------------------
+ID          : SVC003
+Name        : Mobile App Development
+Category    : Mobile Services
+Description : Custom Android and iOS app development for startups
+Status      : Active
+
+========================================
+Service Management
+========================================
+1. Add Service
+2. View Services
+3. Search Services
+4. Filter by Status
+5. Update Service
+6. Delete Service
+7. Back to Main Menu
+Enter your choice: 
+========================================
+Main Menu
+========================================
+1. Program Management
+2. Service Management
+3. Customer / Inquiry Management
+4. Search
+5. Business Reports
+6. Exit
+Enter your choice: 
+========================================
+Customer / Inquiry Management
+========================================
+1. Add Inquiry
+2. View Inquiries
+3. Search Inquiries
+4. Filter by Status
+5. Update Inquiry
+6. Update Inquiry Status
+7. Delete Inquiry
+8. Back to Main Menu
+Enter your choice: 
+--- All Inquiries ---
+--------------------------------------------------
+ID       : INQ001
+Customer : Rohan Sharma
+Email    : rohan.sharma@example.com
+Service  : Website Development
+Message  : Interested in a business website with an admin panel.
+Status   : Open
+
+========================================
+Customer / Inquiry Management
+========================================
+1. Add Inquiry
+2. View Inquiries
+3. Search Inquiries
+4. Filter by Status
+5. Update Inquiry
+6. Update Inquiry Status
+7. Delete Inquiry
+8. Back to Main Menu
+Enter your choice: 
+--- Search Inquiries ---
+Enter customer name, email or service: No matching inquiries found.
+
+========================================
+Customer / Inquiry Management
+========================================
+1. Add Inquiry
+2. View Inquiries
+3. Search Inquiries
+4. Filter by Status
+5. Update Inquiry
+6. Update Inquiry Status
+7. Delete Inquiry
+8. Back to Main Menu
+Enter your choice: 
+--- All Inquiries ---
+--------------------------------------------------
+ID       : INQ001
+Customer : Rohan Sharma
+Email    : rohan.sharma@example.com
+Service  : Website Development
+Message  : Interested in a business website with an admin panel.
+Status   : Open
+
+========================================
+Customer / Inquiry Management
+========================================
+1. Add Inquiry
+2. View Inquiries
+3. Search Inquiries
+4. Filter by Status
+5. Update Inquiry
+6. Update Inquiry Status
+7. Delete Inquiry
+8. Back to Main Menu
+Enter your choice: 
+========================================
+Main Menu
+========================================
+1. Program Management
+2. Service Management
+3. Customer / Inquiry Management
+4. Search
+5. Business Reports
+6. Exit
+Enter your choice: 
+========================================
+Business Reports
+========================================
+1. Business Summary
+2. Category Reports
+3. Inquiry Status Report
+4. Back to Main Menu
+Enter your choice: 
+========================================
+Business Summary Report
+========================================
+Total Programs : 3
+Total Services : 3
+Total Inquiries: 1
+
+Program Status
+Active   : 3
+Inactive : 0
+
+Service Status
+Active   : 3
+Inactive : 0
+
+Inquiry Status
+Open        : 1
+In Progress : 0
+Closed      : 0
+
+========================================
+Business Reports
+========================================
+1. Business Summary
+2. Category Reports
+3. Inquiry Status Report
+4. Back to Main Menu
+Enter your choice: 
+--- Programs by Category ---
+Software Development: 2
+Cloud Computing: 1
+
+--- Services by Category ---
+Web Services: 1
+Infrastructure: 1
+Mobile Services: 1
+
+========================================
+Business Reports
+========================================
+1. Business Summary
+2. Category Reports
+3. Inquiry Status Report
+4. Back to Main Menu
+Enter your choice: 
+--- Inquiries by Status ---
+Open: 1
+
+========================================
+Business Reports
+========================================
+1. Business Summary
+2. Category Reports
+3. Inquiry Status Report
+4. Back to Main Menu
+Enter your choice: 
+========================================
+Main Menu
+========================================
+1. Program Management
+2. Service Management
+3. Customer / Inquiry Management
+4. Search
+5. Business Reports
+6. Exit
+Enter your choice: 
+Thank you for using Veda Technology
+Business & Service Management System. Goodbye!

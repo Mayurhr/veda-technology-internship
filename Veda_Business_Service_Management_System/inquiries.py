@@ -3,14 +3,10 @@ inquiries.py
 
 Handles Customer / Inquiry Management:
 Add, View, Search, Filter, Update, Update Status, and Delete.
-
-Day 3:
-Uses the Customer and Inquiry classes from models.py.
 """
 
 import storage
 import validation
-from models import Customer, Inquiry
 
 
 FILENAME = "inquiries.json"
@@ -46,7 +42,7 @@ def load_inquiries():
 def save_inquiries(inquiries):
     """Save inquiries to JSON storage."""
 
-    storage.save_data(
+    return storage.save_data(
         FILENAME,
         inquiries
     )
@@ -102,32 +98,24 @@ def add_inquiry():
 
     inquiry_id = storage.generate_next_id(
         inquiries,
-        "inquiry_id",
-        "INQ"
+        "INQ",
+        "inquiry_id"
     )
 
-    # Create Customer object
-    customer = Customer(
-        inquiry_id,
-        customer_name,
-        email
-    )
+    new_inquiry = {
+        "inquiry_id": inquiry_id,
+        "customer_name": customer_name,
+        "email": email,
+        "service": service,
+        "message": message,
+        "status": status
+    }
 
-    # Create Inquiry object
-    inquiry = Inquiry(
-        inquiry_id,
-        customer.customer_name,
-        customer.email,
-        service,
-        message,
-        status
-    )
+    inquiries.append(new_inquiry)
 
-    inquiries.append(
-        inquiry.to_dict()
-    )
-
-    save_inquiries(inquiries)
+    if not save_inquiries(inquiries):
+        print("Could not save changes.")
+        return
 
     print(
         f"Inquiry added successfully "
@@ -207,13 +195,16 @@ def search_inquiries():
         inquiry
         for inquiry in inquiries
         if keyword in inquiry.get(
-            "customer_name", ""
+            "customer_name",
+            ""
         ).lower()
         or keyword in inquiry.get(
-            "email", ""
+            "email",
+            ""
         ).lower()
         or keyword in inquiry.get(
-            "service", ""
+            "service",
+            ""
         ).lower()
     ]
 
@@ -316,22 +307,28 @@ def update_inquiry():
 
     new_customer = input(
         f"New customer name "
-        f"[{inquiry['customer_name']}]: "
+        f"[{inquiry.get('customer_name', '')}]: "
     ).strip()
 
     new_email = input(
-        f"New email "
-        f"[{inquiry['email']}]: "
+        f"New email [{inquiry.get('email', '')}]: "
     ).strip()
 
+    if new_email and not validation.is_valid_email(
+        new_email
+    ):
+        print(
+            "Invalid email address. "
+            "Inquiry was not updated."
+        )
+        return
+
     new_service = input(
-        f"New service "
-        f"[{inquiry['service']}]: "
+        f"New service [{inquiry.get('service', '')}]: "
     ).strip()
 
     new_message = input(
-        f"New message "
-        f"[{inquiry['message']}]: "
+        f"New message [{inquiry.get('message', '')}]: "
     ).strip()
 
     print("\nStatus:")
@@ -360,15 +357,6 @@ def update_inquiry():
         inquiry["customer_name"] = new_customer
 
     if new_email:
-        if not validation.is_valid_email(
-            new_email
-        ):
-            print(
-                "Invalid email address. "
-                "Inquiry was not updated."
-            )
-            return
-
         inquiry["email"] = new_email
 
     if new_service:
@@ -386,7 +374,9 @@ def update_inquiry():
     elif status_choice == "3":
         inquiry["status"] = "Closed"
 
-    save_inquiries(inquiries)
+    if not save_inquiries(inquiries):
+        print("Could not save changes.")
+        return
 
     print(
         "Inquiry updated successfully."
@@ -444,7 +434,9 @@ def update_inquiry_status():
         )
         return
 
-    save_inquiries(inquiries)
+    if not save_inquiries(inquiries):
+        print("Could not save changes.")
+        return
 
     print(
         "Inquiry status updated successfully."
@@ -491,7 +483,9 @@ def delete_inquiry():
 
     inquiries.remove(inquiry)
 
-    save_inquiries(inquiries)
+    if not save_inquiries(inquiries):
+        print("Could not save changes.")
+        return
 
     print(
         f"Inquiry {inquiry_id} "

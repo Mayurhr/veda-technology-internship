@@ -1,0 +1,10 @@
+[
+    {
+        "inquiry_id": "INQ001",
+        "customer_name": "Rohan Sharma",
+        "email": "rohan.sharma@example.com",
+        "service": "Website Development",
+        "message": "Interested in a business website with an admin panel.",
+        "status": "Open"
+    }
+]

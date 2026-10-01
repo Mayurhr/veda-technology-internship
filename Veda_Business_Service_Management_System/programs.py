@@ -1,16 +1,5 @@
-"""
-programs.py
-
-Handles Program Management:
-Add, View, Search, Filter, Update, and Delete.
-
-Day 3:
-Uses the Program class from models.py.
-"""
-
 import storage
 import validation
-from models import Program
 
 
 FILENAME = "programs.json"
@@ -58,7 +47,7 @@ def load_programs():
 def save_programs(programs):
     """Save programs to JSON storage."""
 
-    storage.save_data(
+    return storage.save_data(
         FILENAME,
         programs
     )
@@ -106,23 +95,23 @@ def add_program():
 
     program_id = storage.generate_next_id(
         programs,
-        "program_id",
-        "PRG"
+        "PRG",
+        "program_id"
     )
 
-    program = Program(
-        program_id,
-        program_name,
-        category,
-        duration,
-        status
-    )
+    new_program = {
+        "program_id": program_id,
+        "program_name": program_name,
+        "category": category,
+        "duration": duration,
+        "status": status
+    }
 
-    programs.append(
-        program.to_dict()
-    )
+    programs.append(new_program)
 
-    save_programs(programs)
+    if not save_programs(programs):
+        print("Could not save changes.")
+        return
 
     print(
         f"Program added successfully "
@@ -149,22 +138,27 @@ def print_program(program):
     """Display one program."""
 
     print("-" * 40)
+
     print(
         f"ID       : "
         f"{program.get('program_id', '')}"
     )
+
     print(
         f"Name     : "
         f"{program.get('program_name', '')}"
     )
+
     print(
         f"Category : "
         f"{program.get('category', '')}"
     )
+
     print(
         f"Duration : "
         f"{program.get('duration', '')}"
     )
+
     print(
         f"Status   : "
         f"{program.get('status', '')}"
@@ -192,10 +186,12 @@ def search_programs():
         program
         for program in programs
         if keyword in program.get(
-            "program_name", ""
+            "program_name",
+            ""
         ).lower()
         or keyword in program.get(
-            "category", ""
+            "category",
+            ""
         ).lower()
     ]
 
@@ -293,15 +289,15 @@ def update_program():
     )
 
     new_name = input(
-        f"New name [{program['program_name']}]: "
+        f"New name [{program.get('program_name', '')}]: "
     ).strip()
 
     new_category = input(
-        f"New category [{program['category']}]: "
+        f"New category [{program.get('category', '')}]: "
     ).strip()
 
     new_duration = input(
-        f"New duration [{program['duration']}]: "
+        f"New duration [{program.get('duration', '')}]: "
     ).strip()
 
     print("\nStatus:")
@@ -339,7 +335,9 @@ def update_program():
     elif status_choice == "2":
         program["status"] = "Inactive"
 
-    save_programs(programs)
+    if not save_programs(programs):
+        print("Could not save changes.")
+        return
 
     print(
         "Program updated successfully."
@@ -386,7 +384,9 @@ def delete_program():
 
     programs.remove(program)
 
-    save_programs(programs)
+    if not save_programs(programs):
+        print("Could not save changes.")
+        return
 
     print(
         f"Program {program_id} "

@@ -1,0 +1,23 @@
+[
+    {
+        "service_id": "SVC001",
+        "service_name": "Website Development",
+        "category": "Web Services",
+        "description": "Custom business website design and development",
+        "status": "Active"
+    },
+    {
+        "service_id": "SVC002",
+        "service_name": "Cloud Hosting",
+        "category": "Infrastructure",
+        "description": "Managed cloud hosting and deployment services",
+        "status": "Active"
+    },
+    {
+        "service_id": "SVC003",
+        "service_name": "Mobile App Development",
+        "category": "Mobile Services",
+        "description": "Custom Android and iOS app development for startups",
+        "status": "Active"
+    }
+]

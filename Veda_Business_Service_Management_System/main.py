@@ -1,5 +1,3 @@
-
-
 import programs
 import services
 import inquiries
@@ -79,4 +77,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (EOFError, KeyboardInterrupt):
+        print("\n\nInput closed. Exiting the application. Goodbye!")

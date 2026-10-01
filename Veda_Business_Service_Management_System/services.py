@@ -1,16 +1,12 @@
 """
 services.py
 
-Handles Service Management:
-Add, View, Search, Filter, Update, and Delete.
-
-Day 3:
-Uses the Service class from models.py.
+Handles all Service Management features:
+Add, View, Search, Filter, Update, and Delete digital services.
 """
 
 import storage
 import validation
-from models import Service
 
 
 FILENAME = "services.json"
@@ -58,7 +54,7 @@ def load_services():
 def save_services(services):
     """Save services to JSON storage."""
 
-    storage.save_data(
+    return storage.save_data(
         FILENAME,
         services
     )
@@ -106,23 +102,23 @@ def add_service():
 
     service_id = storage.generate_next_id(
         services,
-        "service_id",
-        "SVC"
+        "SVC",
+        "service_id"
     )
 
-    service = Service(
-        service_id,
-        service_name,
-        category,
-        description,
-        status
-    )
+    new_service = {
+        "service_id": service_id,
+        "service_name": service_name,
+        "category": category,
+        "description": description,
+        "status": status
+    }
 
-    services.append(
-        service.to_dict()
-    )
+    services.append(new_service)
 
-    save_services(services)
+    if not save_services(services):
+        print("Could not save changes.")
+        return
 
     print(
         f"Service added successfully "
@@ -149,22 +145,27 @@ def print_service(service):
     """Display one service."""
 
     print("-" * 50)
+
     print(
         f"ID          : "
         f"{service.get('service_id', '')}"
     )
+
     print(
         f"Name        : "
         f"{service.get('service_name', '')}"
     )
+
     print(
         f"Category    : "
         f"{service.get('category', '')}"
     )
+
     print(
         f"Description : "
         f"{service.get('description', '')}"
     )
+
     print(
         f"Status      : "
         f"{service.get('status', '')}"
@@ -192,10 +193,12 @@ def search_services():
         service
         for service in services
         if keyword in service.get(
-            "service_name", ""
+            "service_name",
+            ""
         ).lower()
         or keyword in service.get(
-            "category", ""
+            "category",
+            ""
         ).lower()
     ]
 
@@ -293,15 +296,15 @@ def update_service():
     )
 
     new_name = input(
-        f"New name [{service['service_name']}]: "
+        f"New name [{service.get('service_name', '')}]: "
     ).strip()
 
     new_category = input(
-        f"New category [{service['category']}]: "
+        f"New category [{service.get('category', '')}]: "
     ).strip()
 
     new_description = input(
-        f"New description [{service['description']}]: "
+        f"New description [{service.get('description', '')}]: "
     ).strip()
 
     print("\nStatus:")
@@ -339,7 +342,9 @@ def update_service():
     elif status_choice == "2":
         service["status"] = "Inactive"
 
-    save_services(services)
+    if not save_services(services):
+        print("Could not save changes.")
+        return
 
     print(
         "Service updated successfully."
@@ -386,7 +391,9 @@ def delete_service():
 
     services.remove(service)
 
-    save_services(services)
+    if not save_services(services):
+        print("Could not save changes.")
+        return
 
     print(
         f"Service {service_id} "
